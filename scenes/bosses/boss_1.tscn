@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckjwggudmpeca"]
+
+[ext_resource type="Texture2D" uid="uid://rxwhul5kxe27" path="res://icon.svg" id="1_53s3b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdia2"]
+radius = 64.0
+height = 228.0
+
+[node name="Boss1" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_rdia2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_53s3b")

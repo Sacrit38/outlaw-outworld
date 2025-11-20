@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bja4ssco6j824"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_smyh7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utq4i"]
+size = Vector2(88, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smyh7"]
+size = Vector2(102, 48)
+
+[node name="Outlaw" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(88, 128)
+texture = SubResource("PlaceholderTexture2D_smyh7")
+
+[node name="OutlawCollision" type="CollisionShape2D" parent="."]
+position = Vector2(1.9073486e-06, 0)
+shape = SubResource("RectangleShape2D_utq4i")
+
+[node name="MeleeHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(95, -13)
+shape = SubResource("RectangleShape2D_smyh7")

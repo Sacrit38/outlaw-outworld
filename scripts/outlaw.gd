@@ -5,7 +5,7 @@ const JUMP_VELOCITY = -1800
 var Melee : bool = true 
 var can_shoot: bool = true
 
-var Projectile = preload("res://Scene/Projectile.tscn") 
+var Projectile = preload("uid://c08faj4cqcv8g") 
 
 func shoot() -> void:
 	var p = Projectile.instantiate()

@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvcj1pn6ihuaj"]
+[gd_scene load_steps=3 format=3 uid="uid://bvcj1pn6ihuaj"]
 
 [ext_resource type="Script" uid="uid://c65gcqeynmiho" path="res://main_menu.gd" id="1_06t4h"]
+[ext_resource type="FontFile" uid="uid://cmtqfnanwlrx4" path="res://font/Varnyx-Regular.ttf" id="2_7vrkn"]
 
-[node name="Main_Menu" type="Control"]
+[node name="HUDs" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,16 +15,55 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_06t4h")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -249.5
+offset_top = -41.5
+offset_right = 249.5
+offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 60
+text = "Outlaw Outworld"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="PausePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseLabel" type="Label" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 5.0
+offset_right = 99.99939
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PausePanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -37,70 +78,54 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="Start" type="Button" parent="VBoxContainer"]
+[node name="Resume" type="Button" parent="PausePanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
-text = "Start Game"
+text = "Resume"
 
-[node name="Option" type="Button" parent="VBoxContainer"]
+[node name="Option" type="Button" parent="PausePanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Options"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="PausePanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Quit"
 
-[node name="Label" type="Label" parent="."]
+[node name="Pause" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 100.0
-offset_right = 99.99939
-offset_bottom = 175.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 60
-text = "Outlaw Outworld"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="OptionPanel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
+offset_left = -70.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 70.0
+grow_horizontal = 0
+text = "||"
 
-[node name="OptionLabel" type="Label" parent="OptionPanel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 100.0
-offset_right = 99.99939
-offset_bottom = 175.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 48
-text = "Options"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="OptionBack" type="Button" parent="OptionPanel"]
+[node name="Score" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_7vrkn")
 theme_override_font_sizes/font_size = 32
-text = "Back"
+text = "Score: 0"
 
-[connection signal="button_up" from="VBoxContainer/Start" to="." method="_on_start_button_up"]
-[connection signal="button_up" from="VBoxContainer/Option" to="." method="_on_option_button_up"]
-[connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_quit_button_up"]
-[connection signal="button_up" from="OptionPanel/OptionBack" to="." method="_on_back_option_button_up"]
+[node name="BestScore" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_font_sizes/font_size = 26
+text = "Best: 100"
+
+[connection signal="button_up" from="PausePanel/VBoxContainer/Resume" to="." method="_on_resume_button_up"]
+[connection signal="button_up" from="PausePanel/VBoxContainer/Option" to="." method="_on_option_button_up"]
+[connection signal="button_up" from="PausePanel/VBoxContainer/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="Pause" to="." method="_on_pause_button_up"]

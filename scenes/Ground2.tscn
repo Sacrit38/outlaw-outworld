@@ -8,7 +8,6 @@ size = Vector2(1153, 50)
 [node name="Ground2" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.49993896, 0)
 shape = SubResource("RectangleShape2D_pneyn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

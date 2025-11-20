@@ -2,11 +2,12 @@ extends Node2D
 
 const outlaw_start := Vector2i(100, 510)
 const camera_start := Vector2i(576, 321)
-
 const speed :float = 500.0
+var screen_size : Vector2i
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	screen_size = get_window().size
 	new_game()
 
 func new_game():
@@ -17,11 +18,15 @@ func new_game():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Ground.position.x += -speed * delta
-	$Ground2.position.x += -speed * delta
+	$Outlaw.position.x += speed*delta
+	$Camera2D.position.x += speed*delta
 	$Outlaw.actions()
 	
-	if $Ground.position.x <= -576:
-		$Ground.position.x = 1728
-	elif $Ground2.position.x <= -576:
-		$Ground2.position = 1728
+	if $Camera2D.position.x - $Ground.position.x > screen_size.x:
+		$Ground.position.x += 1152*2
+	elif $Camera2D.position.x - $Ground2.position.x > screen_size.x:
+		$Ground2.position.x += 1152*2
+	#if $Ground.position.x <= -576:
+		#$Ground.position.x += 1728
+	#elif $Ground2.position.x <= -576:
+		#$Ground2.position += 1728

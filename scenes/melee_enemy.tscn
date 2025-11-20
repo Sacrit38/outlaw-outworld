@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkwdpgslvfnij"]
+
+[ext_resource type="Script" uid="uid://cgrm7a1cmr656" path="res://scripts/melee_enemy.gd" id="1_xnaus"]
+[ext_resource type="Texture2D" uid="uid://dr62vd74cdiqc" path="res://assets/sprites/slime_green.png" id="2_vaj5w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8age4"]
+atlas = ExtResource("2_vaj5w")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulih"]
+atlas = ExtResource("2_vaj5w")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcjf7"]
+atlas = ExtResource("2_vaj5w")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3ymb"]
+atlas = ExtResource("2_vaj5w")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7tl4"]
+atlas = ExtResource("2_vaj5w")
+region = Rect2(0, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4trc7"]
+atlas = ExtResource("2_vaj5w")
+region = Rect2(24, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34nm0"]
+atlas = ExtResource("2_vaj5w")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ppig"]
+atlas = ExtResource("2_vaj5w")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5pw0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8age4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcjf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3ymb")
+}],
+"loop": false,
+"name": &"approach",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7tl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4trc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34nm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ppig")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md266"]
+size = Vector2(10, 11)
+
+[node name="melee_enemy" type="CharacterBody2D"]
+script = ExtResource("1_xnaus")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_c5pw0")
+animation = &"approach"
+autoplay = "idle"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6.5)
+shape = SubResource("RectangleShape2D_md266")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+target_position = Vector2(-21, 0)
+collision_mask = 2
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

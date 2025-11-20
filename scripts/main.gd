@@ -1,9 +1,9 @@
 extends Node2D
 
-const outlaw_start := Vector2i(200, 550)
+const outlaw_start := Vector2i(100, 510)
 const camera_start := Vector2i(576, 321)
 
-const speed :float = 50.0
+const speed :float = 500.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

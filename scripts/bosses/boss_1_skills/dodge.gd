@@ -6,6 +6,8 @@ var state : int = 0
 func _ready() -> void:
 	$Timer.start()
 	$AnimatedSprite2D.play()
+	var visible_rect_size = get_viewport().size
+	print("Visible viewport size: " + str(visible_rect_size.x) + "x" + str(visible_rect_size.y))
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://c8jwdykkjq26p"]
 
-[ext_resource type="Script" uid="uid://sjg8og56anrs" path="res://scripts/bosses/skill_1/dodge.gd" id="1_as8ox"]
+[ext_resource type="Script" uid="uid://sjg8og56anrs" path="res://scripts/bosses/boss_1_skills/dodge.gd" id="1_as8ox"]
 [ext_resource type="Texture2D" uid="uid://0u6u6u4bkvqe" path="res://sprites/placeholder_boss_1_dodge_skill.png" id="2_84q3t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ya6ah"]
@@ -144,7 +144,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 6.0
+"speed": 8.0
 }]
 
 [node name="Node2D" type="Node2D"]
@@ -160,10 +160,10 @@ shape = SubResource("RectangleShape2D_ya6ah")
 position = Vector2(6, -143)
 scale = Vector2(35.838608, 10.083362)
 sprite_frames = SubResource("SpriteFrames_wmg3y")
-frame_progress = 0.7292409
+frame_progress = 0.5291159
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.75
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

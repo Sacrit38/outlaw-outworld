@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bvcj1pn6ihuaj"]
 
-[ext_resource type="Script" uid="uid://c65gcqeynmiho" path="res://main_menu.gd" id="1_06t4h"]
-[ext_resource type="FontFile" uid="uid://cmtqfnanwlrx4" path="res://font/Varnyx-Regular.ttf" id="2_7vrkn"]
+[ext_resource type="Script" uid="uid://c65gcqeynmiho" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="FontFile" uid="uid://cmtqfnanwlrx4" path="res://fonts/Varnyx-Regular.ttf" id="2_bqqt6"]
 
 [node name="HUDs" type="Control"]
 process_mode = 3
@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_06t4h")
+script = ExtResource("1_ekxnf")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -28,7 +28,7 @@ offset_right = 249.5
 offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 60
 text = "Outlaw Outworld"
 horizontal_alignment = 1
@@ -115,13 +115,13 @@ offset_bottom = 40.0
 
 [node name="Score" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 32
 text = "Score: 0"
 
 [node name="BestScore" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_7vrkn")
+theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 26
 text = "Best: 100"
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0am6kf1o8m5h"]
 
-[ext_resource type="Script" uid="uid://fd54covheele" path="res://Script/main.gd" id="1_2wwxx"]
-[ext_resource type="PackedScene" uid="uid://b0h7u5efx0byp" path="res://Scene/Ground.tscn" id="1_f6udf"]
-[ext_resource type="PackedScene" uid="uid://bja4ssco6j824" path="res://Scene/Outlaw.tscn" id="3_3amdw"]
-[ext_resource type="Script" uid="uid://djjlnyuoulpl4" path="res://Script/outlaw.gd" id="4_1xcnr"]
-[ext_resource type="PackedScene" uid="uid://bs3a1dkn53ajo" path="res://Scene/Ground2.tscn" id="5_3amdw"]
+[ext_resource type="Script" uid="uid://fd54covheele" path="res://scripts/main.gd" id="1_2wwxx"]
+[ext_resource type="PackedScene" uid="uid://b0h7u5efx0byp" path="res://scenes/Ground.tscn" id="1_f6udf"]
+[ext_resource type="PackedScene" uid="uid://bja4ssco6j824" path="res://scenes/Outlaw.tscn" id="3_3amdw"]
+[ext_resource type="Script" uid="uid://djjlnyuoulpl4" path="res://scripts/outlaw.gd" id="4_1xcnr"]
+[ext_resource type="PackedScene" uid="uid://bs3a1dkn53ajo" path="res://scenes/Ground2.tscn" id="5_3amdw"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_2wwxx")

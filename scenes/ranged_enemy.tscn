@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6amlu6fxbdxq"]
 
-[ext_resource type="Script" uid="uid://dqsrshqjeiwrq" path="res://Script/ranged_enemy.gd" id="1_alsgf"]
-[ext_resource type="PackedScene" uid="uid://dy3n2vx324ioy" path="res://Scene/ranged_enemy_bullet.tscn" id="2_5rm4b"]
-[ext_resource type="Texture2D" uid="uid://bn8van5dbcb8j" path="res://Sprite/placeholder_ranged_enemy.png" id="2_q06ob"]
+[ext_resource type="Script" uid="uid://dqsrshqjeiwrq" path="res://scripts/ranged_enemy.gd" id="1_alsgf"]
+[ext_resource type="PackedScene" uid="uid://dy3n2vx324ioy" path="res://scenes/ranged_enemy_bullet.tscn" id="2_5rm4b"]
+[ext_resource type="Texture2D" uid="uid://bn8van5dbcb8j" path="res://sprites/placeholder_ranged_enemy.png" id="2_q06ob"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5rm4b"]
 radius = 46.09772

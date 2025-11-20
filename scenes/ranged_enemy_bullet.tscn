@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dy3n2vx324ioy"]
 
-[ext_resource type="Script" uid="uid://cbbbl7y8goeyl" path="res://Script/ranged_enemy_bullet.gd" id="1_2nqmk"]
-[ext_resource type="Texture2D" uid="uid://tlo53boeuckl" path="res://Sprite/placeholder_ranged_enemy_bullet.png" id="2_1n3r7"]
+[ext_resource type="Script" uid="uid://cbbbl7y8goeyl" path="res://scripts/ranged_enemy_bullet.gd" id="1_2nqmk"]
+[ext_resource type="Texture2D" uid="uid://tlo53boeuckl" path="res://sprites/placeholder_ranged_enemy_bullet.png" id="2_1n3r7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7p6dy"]
 radius = 15.524175

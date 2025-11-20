@@ -6,7 +6,6 @@ size = Vector2(1153, 50)
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wndbe"]
 
 [node name="Ground" type="StaticBody2D"]
-position = Vector2(576, 622)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.49993896, 0)

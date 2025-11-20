@@ -66,10 +66,41 @@ offset_right = 99.99939
 offset_bottom = 175.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 60
-text = "Outlaw Ouworld"
+text = "Outlaw Outworld"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="OptionPanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionLabel" type="Label" parent="OptionPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 100.0
+offset_right = 99.99939
+offset_bottom = 175.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionBack" type="Button" parent="OptionPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Back"
 
 [connection signal="button_up" from="VBoxContainer/Start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="VBoxContainer/Option" to="." method="_on_option_button_up"]
 [connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="OptionPanel/OptionBack" to="." method="_on_back_option_button_up"]

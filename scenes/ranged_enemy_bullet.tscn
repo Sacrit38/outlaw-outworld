@@ -6,17 +6,17 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_7p6dy"]
 radius = 15.524175
 
-[node name="RangedEnemyBullet" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="RangedEnemyBullet" type="CharacterBody2D"]
 script = ExtResource("1_2nqmk")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -5.684342e-14)
 scale = Vector2(0.16161379, 0.16161382)
 texture = ExtResource("2_1n3r7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_7p6dy")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="CharacterBody2D"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

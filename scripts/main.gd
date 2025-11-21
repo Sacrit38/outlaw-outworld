@@ -1,6 +1,6 @@
 extends Node2D
 
-const outlaw_start := Vector2i(100, 510)
+const outlaw_start := Vector2i(200, 510)
 const camera_start := Vector2i(576, 321)
 const speed :float = 500.0
 

@@ -8,9 +8,9 @@ var can_shoot: bool = true
 var Projectile = preload("uid://c08faj4cqcv8g") 
 
 func shoot() -> void:
-	var p = Projectile.instantiate()
-	p.global_position = global_position
-	get_parent().add_child(p)
+	var projectile = Projectile.instantiate()
+	projectile.global_position = global_position
+	get_parent().add_child(projectile)
 
 func actions() -> void:
 	$MeleeHitbox.disabled = true

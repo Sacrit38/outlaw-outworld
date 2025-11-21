@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tlo53boeuckl"
-path="res://.godot/imported/placeholder_ranged_enemy_bullet.png-ce856406cb7fd308009afa4612a73a4e.ctex"
+uid="uid://crlbltlnj7ccn"
+path="res://.godot/imported/4.png-f6f148aec08508b3cbfad9e5950722ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/placeholder_ranged_enemy_bullet.png"
-dest_files=["res://.godot/imported/placeholder_ranged_enemy_bullet.png-ce856406cb7fd308009afa4612a73a4e.ctex"]
+source_file="res://assets/parallax background/4.png"
+dest_files=["res://.godot/imported/4.png-f6f148aec08508b3cbfad9e5950722ce.ctex"]
 
 [params]
 

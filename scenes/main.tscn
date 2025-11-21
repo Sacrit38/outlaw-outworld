@@ -1,23 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0am6kf1o8m5h"]
+[gd_scene load_steps=8 format=3 uid="uid://c0am6kf1o8m5h"]
 
 [ext_resource type="Script" uid="uid://fd54covheele" path="res://scripts/main.gd" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://b0h7u5efx0byp" path="res://scenes/Ground.tscn" id="1_f6udf"]
 [ext_resource type="PackedScene" uid="uid://bja4ssco6j824" path="res://scenes/Outlaw.tscn" id="3_3amdw"]
 [ext_resource type="Script" uid="uid://djjlnyuoulpl4" path="res://scripts/outlaw.gd" id="4_1xcnr"]
 [ext_resource type="PackedScene" uid="uid://bs3a1dkn53ajo" path="res://scenes/Ground2.tscn" id="5_3amdw"]
+[ext_resource type="PackedScene" uid="uid://dlqbsyqy602dc" path="res://scenes/background_s1.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bg51ltq0ybbwg" path="res://scenes/foreground_s1.tscn" id="7_o6xl0"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_2wwxx")
+
+[node name="Background" parent="." instance=ExtResource("6_tefeu")]
+scale = Vector2(1, 1)
+transform = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 321)
 
 [node name="Ground" parent="." instance=ExtResource("1_f6udf")]
-position = Vector2(576, 620)
+position = Vector2(571, 596)
+
+[node name="Ground2" parent="." instance=ExtResource("5_3amdw")]
+position = Vector2(1723, 596)
 
 [node name="Outlaw" parent="." instance=ExtResource("3_3amdw")]
 position = Vector2(48, 510)
 script = ExtResource("4_1xcnr")
 
-[node name="Ground2" parent="." instance=ExtResource("5_3amdw")]
-position = Vector2(1728, 620)
+[node name="foreground" parent="." instance=ExtResource("7_o6xl0")]

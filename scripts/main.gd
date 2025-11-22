@@ -9,7 +9,7 @@ var score: int
 var high_score: int
 
 #set true to stop camera and look back
-static var stop_cam = true
+static var stop_cam = false
 
 func show_score():
 	@warning_ignore("integer_division")

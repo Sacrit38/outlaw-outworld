@@ -228,6 +228,8 @@ size = Vector2(87, 117)
 size = Vector2(86, 48)
 
 [node name="Outlaw" type="CharacterBody2D"]
+collision_layer = 7
+collision_mask = 3
 script = ExtResource("1_ahkar")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

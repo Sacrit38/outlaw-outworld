@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkwdpgslvfnij"]
+[gd_scene load_steps=15 format=3 uid="uid://bkwdpgslvfnij"]
 
 [ext_resource type="Script" uid="uid://cgrm7a1cmr656" path="res://scripts/melee_enemy.gd" id="1_xnaus"]
 [ext_resource type="Texture2D" uid="uid://dr62vd74cdiqc" path="res://assets/placeholder-ground-enemy.png" id="2_vaj5w"]
@@ -73,25 +73,39 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_md266"]
-size = Vector2(10, 11)
+size = Vector2(132, 121.75)
+
+[sub_resource type="Animation" id="Animation_xnaus"]
+resource_name = "idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vaj5w"]
+_data = {
+&"idle": SubResource("Animation_xnaus")
+}
 
 [node name="melee_enemy" type="CharacterBody2D"]
 script = ExtResource("1_xnaus")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(0, -7.6293945e-06)
+scale = Vector2(9.791666, 9.791666)
 sprite_frames = SubResource("SpriteFrames_c5pw0")
-animation = &"approach"
+animation = &"idle"
 autoplay = "idle"
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -6.5)
+position = Vector2(-1, 53.875)
 shape = SubResource("RectangleShape2D_md266")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, -6)
-target_position = Vector2(-21, 0)
-collision_mask = 2
+position = Vector2(-61, 50)
+target_position = Vector2(-95, 0)
+collision_mask = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vaj5w")
+}
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

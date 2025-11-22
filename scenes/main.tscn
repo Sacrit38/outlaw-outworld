@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://fd54covheele" path="res://scripts/main.gd" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://b0h7u5efx0byp" path="res://scenes/Ground.tscn" id="1_f6udf"]
+[ext_resource type="PackedScene" uid="uid://bfkmq4ls11v6h" path="res://scenes/spawner.tscn" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bja4ssco6j824" path="res://scenes/Outlaw.tscn" id="3_3amdw"]
 [ext_resource type="PackedScene" uid="uid://bs3a1dkn53ajo" path="res://scenes/Ground2.tscn" id="5_3amdw"]
 [ext_resource type="PackedScene" uid="uid://dlqbsyqy602dc" path="res://scenes/background_s1.tscn" id="6_tefeu"]
@@ -17,6 +18,9 @@ transform = Transform2D(1, 0, 0, 1, 0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 321)
+
+[node name="Spawner" parent="Camera2D" instance=ExtResource("2_tefeu")]
+position = Vector2(700, 0)
 
 [node name="Ground" parent="." instance=ExtResource("1_f6udf")]
 position = Vector2(571, 596)

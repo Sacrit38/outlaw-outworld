@@ -1,5 +1,6 @@
 extends Node2D
 
+var flying_heights := [200, 390]
 const OUTLAW_START := Vector2i(200, 510)
 const CAMERA_START := Vector2i(576, 321)
 const SPEED :float = 500.0
@@ -17,6 +18,7 @@ func show_high_score():
 func check_high_score():
 	if score > high_score:
 		high_score = score
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

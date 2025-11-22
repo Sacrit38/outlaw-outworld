@@ -1,6 +1,6 @@
 extends CharacterBody2D
 @export var bullet_scene: PackedScene
-@export  var fire_rate = 0.5
+@export  var fire_rate = 2.5
 
 @onready var muzzle = $Sprite2D/muzzle
 

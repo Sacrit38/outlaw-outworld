@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://fd54covheele" path="res://scripts/main.gd" id="1_65q4h"]
 [ext_resource type="PackedScene" uid="uid://b0h7u5efx0byp" path="res://scenes/Ground.tscn" id="2_aaxl1"]
 [ext_resource type="PackedScene" uid="uid://bja4ssco6j824" path="res://scenes/Outlaw.tscn" id="3_wkjd1"]
-[ext_resource type="Script" uid="uid://djjlnyuoulpl4" path="res://scripts/outlaw.gd" id="4_wp2yw"]
 [ext_resource type="PackedScene" uid="uid://bs3a1dkn53ajo" path="res://scenes/Ground2.tscn" id="5_sub64"]
+[ext_resource type="PackedScene" uid="uid://cpiswo88l2wxj" path="res://scenes/hud.tscn" id="6_2vple"]
 [ext_resource type="PackedScene" uid="uid://ckjwggudmpeca" path="res://scenes/bosses/boss_1.tscn" id="6_jtgdo"]
 
 [node name="Main" type="Node2D"]
@@ -13,15 +13,18 @@ script = ExtResource("1_65q4h")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 321)
 
+[node name="Boss1" parent="Camera2D" instance=ExtResource("6_jtgdo")]
+position = Vector2(-409, 96)
+collision_layer = 2
+collision_mask = 2
+
 [node name="Ground" parent="." instance=ExtResource("2_aaxl1")]
 position = Vector2(576, 620)
 
 [node name="Outlaw" parent="." instance=ExtResource("3_wkjd1")]
 position = Vector2(631, 496)
-script = ExtResource("4_wp2yw")
 
 [node name="Ground2" parent="." instance=ExtResource("5_sub64")]
 position = Vector2(1728, 620)
 
-[node name="Boss1" parent="." instance=ExtResource("6_jtgdo")]
-position = Vector2(69, 476)
+[node name="HUD" parent="." instance=ExtResource("6_2vple")]

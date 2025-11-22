@@ -8,6 +8,8 @@ radius = 64.0
 height = 228.0
 
 [node name="Boss1" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_8ry2h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

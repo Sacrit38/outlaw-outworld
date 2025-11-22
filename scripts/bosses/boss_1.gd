@@ -4,7 +4,7 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var state_time = 0
-var acceleration = -10
+var acceleration = 10
 var melee = false
 var dodge_1 = preload("res://scenes/bosses/boss_1_skills/dodge.tscn")
 var dodge_2 = preload("res://scenes/bosses/boss_1_skills/dodge_1.tscn")
@@ -41,19 +41,19 @@ func phase_1() -> void:
 		get_parent().add_child(skill_instance)
 	pass
 	
-func phase_1_to_2() -> void:
-	position.x = (get_viewport().size.x/2 - 75)
-	pass
+#func phase_1_to_2() -> void:
+	#position.x = (get_viewport().size.x/2 - 75)
+	#pass
 	
 func phase_2() -> void:
 	var rando = randi_range(1, 2)
 	if rando == 1:
 		var skill_instance : Node2D = range_1.instantiate()
-		skill_instance.global_position = Vector2((get_viewport().size.x/2) + 50, (get_viewport().size.y/3)  - 100)
+		skill_instance.global_position = Vector2(-(get_viewport().size.x/2) - 50, (get_viewport().size.y/3)  - 100)
 		get_parent().add_child(skill_instance)
 	if rando == 2:
 		var skill_instance : Node2D = range_1.instantiate()
-		skill_instance.global_position = Vector2((get_viewport().size.x/2) + 50, -(get_viewport().size.y/4)  - 50)
+		skill_instance.global_position = Vector2(-(get_viewport().size.x/2) - 50, -(get_viewport().size.y/4)  - 50)
 		get_parent().add_child(skill_instance)
 	
 	pass
@@ -67,8 +67,6 @@ func _on_timer_timeout() -> void:
 	if state_time < 10:
 		phase_1()
 		pass
-	elif state_time == 10: 
-		phase_1_to_2()
 	elif state_time < 16:
 		phase_2()
 		pass
@@ -85,7 +83,7 @@ func _on_area_up_body_entered(body: Node2D) -> void:
 		velocity.x = 0
 		# call animation
 		await get_tree().create_timer(.5).timeout
-		position.x = (get_viewport().size.x/2 - 75)
+		position.x = -(get_viewport().size.x/2 - 75)
 	
 	pass # Replace with function body.
 
@@ -97,6 +95,6 @@ func _on_area_down_body_entered(body: Node2D) -> void:
 		#attack
 		# call animation
 		await get_tree().create_timer(.5).timeout
-		position.x = (get_viewport().size.x/2 - 75)
+		position.x = -(get_viewport().size.x/2 - 75)
 	
 	pass # Replace with function body.

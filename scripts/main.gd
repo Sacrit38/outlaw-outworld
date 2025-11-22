@@ -8,6 +8,9 @@ const SCORE_MODIFIER: int = 10
 var score: int
 var high_score: int
 
+#set true to stop camera and look back
+static var stop_cam = true
+
 func show_score():
 	@warning_ignore("integer_division")
 	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score/ SCORE_MODIFIER)
@@ -34,11 +37,19 @@ func new_game():
 	$Ground.position = Vector2i(572,596)
 	$Ground2.position = Vector2i(1724,596)
 	viewportX = get_viewport().size.x
+	
+func start_cam() :
+	await get_tree().create_timer(1.0).timeout
+	stop_cam = false
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$Outlaw.position.x += SPEED*delta
-	$Camera2D.position.x += SPEED*delta
+	if stop_cam:
+		start_cam()
+	else :
+		$Camera2D.position.x += SPEED*delta
 	$Outlaw.actions()
 	
 	if $Camera2D.position.x - $Ground.position.x > Global.screen_size.x:

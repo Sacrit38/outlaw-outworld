@@ -12,7 +12,7 @@ func movement(delta: float) -> void:
 		position.x += 0
 		position.y += speed * delta
 	else:
-		position.x += -speed * delta
+		position.x += speed * delta
 	
 
 

@@ -28,14 +28,14 @@ autostart = true
 [node name="AreaDown" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDown"]
-position = Vector2(-138, -1.5)
+position = Vector2(138, -1.5)
 shape = SubResource("RectangleShape2D_8ry2h")
 
 [node name="AreaUp" type="Area2D" parent="."]
 position = Vector2(0, -237)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaUp"]
-position = Vector2(-138, -1.5)
+position = Vector2(138, -1.5)
 shape = SubResource("RectangleShape2D_8ry2h")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

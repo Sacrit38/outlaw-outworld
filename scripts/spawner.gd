@@ -20,7 +20,7 @@ var ground_height : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_window().size
-	ground_height = 100
+	ground_height = 40
 	pass # Replace with function body.
 
 
@@ -29,8 +29,8 @@ func _process(delta: float) -> void:
 	# generate_enemy()
 	
 	for obs in obstacle:
-		obs.position.x += -speed * delta
-		if obs.position.x <= -(screen_size.x + 10):
+		# obs.position.x += -speed * delta
+		if obs.position.x <= -(screen_size.x + 100):
 			obstacle.erase(obs)
 			obs.queue_free()
 	pass

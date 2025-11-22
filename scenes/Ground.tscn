@@ -1,19 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0h7u5efx0byp"]
 
+[ext_resource type="Texture2D" uid="uid://bswlqc31xeaxc" path="res://assets/parallax background/GROUND.png" id="1_ywuge"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4iobi"]
 size = Vector2(1153, 50)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wndbe"]
 
 [node name="Ground" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.49993896, 0)
+position = Vector2(0, -23)
 shape = SubResource("RectangleShape2D_4iobi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.4999237, -1)
-scale = Vector2(1151.0001, 51.999977)
-texture = SubResource("PlaceholderTexture2D_wndbe")
+position = Vector2(0, -277)
+scale = Vector2(1.0034722, 1)
+texture = ExtResource("1_ywuge")

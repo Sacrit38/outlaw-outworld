@@ -1,12 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://bja4ssco6j824"]
+[gd_scene load_steps=7 format=3 uid="uid://bja4ssco6j824"]
+
+[ext_resource type="Script" uid="uid://2c6v3s6c54mj" path="res://scripts/outlaw_hurtbox.gd" id="1_gwqp1"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_smyh7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utq4i"]
 size = Vector2(88, 128)
 
+[sub_resource type="GDScript" id="GDScript_ahkar"]
+script/source = "extends CollisionShape2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smyh7"]
 size = Vector2(102, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_emcw2"]
+size = Vector2(88, 130)
 
 [node name="Outlaw" type="CharacterBody2D"]
 
@@ -17,7 +36,15 @@ texture = SubResource("PlaceholderTexture2D_smyh7")
 [node name="OutlawCollision" type="CollisionShape2D" parent="."]
 position = Vector2(1.9073486e-06, 0)
 shape = SubResource("RectangleShape2D_utq4i")
+script = SubResource("GDScript_ahkar")
 
 [node name="MeleeHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(95, -13)
 shape = SubResource("RectangleShape2D_smyh7")
+
+[node name="OutlawHurtbox" type="Area2D" parent="."]
+script = ExtResource("1_gwqp1")
+
+[node name="HurtboxShape" type="CollisionShape2D" parent="OutlawHurtbox"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_emcw2")

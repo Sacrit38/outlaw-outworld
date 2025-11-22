@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bja4ssco6j824"]
+[gd_scene load_steps=37 format=3 uid="uid://bja4ssco6j824"]
 
 [ext_resource type="Script" uid="uid://djjlnyuoulpl4" path="res://scripts/outlaw.gd" id="1_ahkar"]
 [ext_resource type="Texture2D" uid="uid://i4chy624xpnk" path="res://assets/animations/scereus/run.png" id="1_gwqp1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bffa3uavbkiru" path="res://assets/animations/scereus/jump.png" id="3_0dybn"]
 [ext_resource type="Texture2D" uid="uid://dwbg47pdt1dj5" path="res://assets/animations/scereus/ranged.png" id="5_fre60"]
 [ext_resource type="Texture2D" uid="uid://dj3tc1qxknsph" path="res://assets/animations/scereus/hurt.png" id="5_ojpt1"]
+[ext_resource type="Script" uid="uid://cl2o0sfy6wgje" path="res://scripts/health.gd" id="8_otwhs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0dybn"]
 atlas = ExtResource("2_0dybn")
@@ -248,6 +249,12 @@ shape = SubResource("RectangleShape2D_utq4i")
 [node name="MeleeHitbox" type="CollisionShape2D" parent="."]
 position = Vector2(86, 3)
 shape = SubResource("RectangleShape2D_smyh7")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("8_otwhs")
+max_health = null
+immortality = null
+metadata/_custom_type_script = "uid://cl2o0sfy6wgje"
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

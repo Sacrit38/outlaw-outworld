@@ -8,6 +8,10 @@ const SCORE_MODIFIER: int = 10
 var score: int
 var high_score: int
 
+var blood_relic = false
+var heart_state = [preload("res://assets/health/dead.png"), preload("res://assets/health/1 heart .png"), preload("res://assets/health/2 hearts.png"), preload("res://assets/health/3 hearts .png"), preload("res://assets/health/4 hearts.png"), preload("res://assets/health/full hearts.png")]
+var heart_blood_relic_state = [preload("res://assets/health/dead + blood relic.png"), preload("res://assets/health/1 heart + blood relic.png"), preload("res://assets/health/2 hearts + blood relic.png"), preload("res://assets/health/3 hearts + blood relic.png"), preload("res://assets/health/4 hearts + blood relic.png"), preload("res://assets/health/full hearts, blood relic gone.png"), preload("res://assets/health/full hearts + blood relic .png")]
+
 func show_score():
 	@warning_ignore("integer_division")
 	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score/ SCORE_MODIFIER)
@@ -25,6 +29,8 @@ func _ready() -> void:
 	score = 0
 	high_score = score
 	new_game()
+	
+	health.your_global_function()
 
 func new_game():
 	$Outlaw.position = OUTLAW_START
@@ -50,3 +56,15 @@ func _physics_process(delta: float) -> void:
 	#Update Score
 	@warning_ignore("narrowing_conversion")
 	score += SPEED * delta
+
+func health_view():
+	var health = get_health()
+	var ins = Sprite2D.new()
+	ins.position = Vector2(0, 0)
+	
+	if blood_relic != false:
+		ins.texture = heart_state[health]
+	else:
+		ins.texture = heart_blood_relic_state[health]
+	
+	add_child(ins)

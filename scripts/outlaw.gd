@@ -13,6 +13,15 @@ enum {
 	STATE_HURT
 }
 
+enum boss_state{
+	START_BOSS,
+	BOSSING,
+	END_BOSS,
+	NO_BOSS
+}
+# START_BOSS to test boss
+static var boss = boss_state.NO_BOSS
+
 func set_state(new_state):
 	if Input.is_action_just_pressed("attack_button") and Melee and not is_on_floor():
 		$AnimatedSprite2D.play("attack")
@@ -87,6 +96,8 @@ var Projectile = preload("uid://c08faj4cqcv8g")
 func shoot() -> void:
 	var projectile = Projectile.instantiate()
 	projectile.global_position = global_position
+	if boss == boss_state.BOSSING:
+		projectile.reversed()
 	get_parent().add_child(projectile)
 
 func actions() -> void:
@@ -121,6 +132,10 @@ func _physics_process(delta: float) -> void:
 		# Handle jump.
 		if Input.is_action_just_pressed("jump_button") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
+			
+	if boss == boss_state.START_BOSS:
+		scale.x = -scale.x
+		boss = boss_state.BOSSING
 	
 	update_animation()
 	move_and_slide()

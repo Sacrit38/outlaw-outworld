@@ -7,6 +7,8 @@
 radius = 15.524175
 
 [node name="RangedEnemyBullet" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_2nqmk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

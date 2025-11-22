@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg51ltq0ybbwg"]
+
+[ext_resource type="Script" uid="uid://n7uti0315vsl" path="res://scripts/foreground_s_1.gd" id="1_ll0dg"]
+[ext_resource type="Texture2D" uid="uid://b70tmhr2ilqou" path="res://assets/parallax background/1.png" id="2_lqts8"]
+
+[node name="foreground" type="Node2D"]
+script = ExtResource("1_ll0dg")
+
+[node name="Sprite2D-1" type="Sprite2D" parent="."]
+texture = ExtResource("2_lqts8")
+centered = false
+
+[node name="Sprite2D-2" type="Sprite2D" parent="."]
+texture = ExtResource("2_lqts8")
+centered = false

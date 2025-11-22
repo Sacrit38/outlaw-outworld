@@ -1,30 +1,55 @@
 extends Node2D
 
-const outlaw_start := Vector2i(100, 510)
-const camera_start := Vector2i(576, 321)
+var flying_heights := [200, 390]
+const OUTLAW_START := Vector2i(200, 510)
+const CAMERA_START := Vector2i(576, 321)
+const SPEED :float = 500.0
+const SCORE_MODIFIER: int = 10
+var score: int
+var high_score: int
 
-const speed :float = 500.0
+func show_score():
+	@warning_ignore("integer_division")
+	$HUD.get_node("ScoreLabel").text = "SCORE: " + str(score/ SCORE_MODIFIER)
+
+func show_high_score():
+	$HUD.get_node("HighScore").text = "HIGH SCORE: " + str(high_score)
+
+func check_high_score():
+	if score > high_score:
+		high_score = score
+
 
 var viewportX
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	score = 0
+	high_score = score
 	new_game()
 
 func new_game():
+	$Outlaw.position = OUTLAW_START
+	$Camera2D.position = CAMERA_START
+	$Ground.position = Vector2i(572,596)
+	$Ground2.position = Vector2i(1724,596)
 	viewportX = get_viewport().size.x
-	$Outlaw.position = outlaw_start
-	$Camera2D.position = camera_start
-	$Ground.position = Vector2i(viewportX/2,620)
-	$Ground2.position = Vector2i((viewportX/2)*3,620)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Ground.position.x += -speed * delta
-	$Ground2.position.x += -speed * delta
+	$Outlaw.position.x += SPEED*delta
+	$Camera2D.position.x += SPEED*delta
 	$Outlaw.actions()
 	
-	if $Ground.position.x <= -viewportX/2:
-		$Ground.position.x = (viewportX/2)*3
-	elif $Ground2.position.x <= -viewportX/2:
-		$Ground2.position.x = (viewportX/2)*3
+	if $Camera2D.position.x - $Ground.position.x > Global.screen_size.x:
+		$Ground.position.x += 1152*2
+	elif $Camera2D.position.x - $Ground2.position.x > Global.screen_size.x:
+		$Ground2.position.x += 1152*2
+	
+	show_score()
+	show_high_score()
+
+func _physics_process(delta: float) -> void:
+	#Update Score
+	@warning_ignore("narrowing_conversion")
+	score += SPEED * delta

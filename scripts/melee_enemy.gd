@@ -9,6 +9,7 @@ enum {
 	STATE_IDLE,
 	STATE_APPROACH
 }
+const speed :float = 500.0
 
 func set_state(new_state):
 	#if animation_lock == true:
@@ -34,9 +35,14 @@ func _ready() -> void:
 	set_state(STATE_IDLE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:	
+func _physics_process(delta: float) -> void:
 	if ray_cast_2d.is_colliding():
 		print("detect")
 		set_state(STATE_APPROACH)
 	else:
 		set_state(STATE_IDLE)
+	
+	#move
+	velocity.x = -speed
+	move_and_slide()
+	

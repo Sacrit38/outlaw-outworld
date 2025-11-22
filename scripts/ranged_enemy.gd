@@ -4,14 +4,30 @@ extends CharacterBody2D
 
 @onready var muzzle = $Sprite2D/muzzle
 
+var stop = false
 var reload = 0.0
+const speed :float = 500.0
+
+func _ready() -> void:
+	await get_tree().create_timer(.5, true, true).timeout
+	stop = true
+	
+	pass
 
 func _process(delta: float) -> void:
 	reload -= delta
 	if reload <= 0.0:
 		fire()
 		reload = fire_rate
+		
+func _physics_process(_delta: float) -> void:
 	
+	# move into the scene
+	if !stop:
+		velocity.x = -speed
+		move_and_slide()
+		pass
+		
 
 func fire():
 	var bullet = bullet_scene.instantiate()

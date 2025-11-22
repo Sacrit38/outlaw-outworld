@@ -14,7 +14,7 @@ script = ExtResource("1_65q4h")
 position = Vector2(576, 321)
 
 [node name="Boss1" parent="Camera2D" instance=ExtResource("6_jtgdo")]
-position = Vector2(-409, 96)
+position = Vector2(-375, 128)
 collision_layer = 2
 collision_mask = 2
 

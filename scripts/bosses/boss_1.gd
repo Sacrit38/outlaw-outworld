@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var state_time = 0
+var acceleration = -10
+var melee = false
 var dodge_1 = preload("res://scenes/bosses/boss_1_skills/dodge.tscn")
 var dodge_2 = preload("res://scenes/bosses/boss_1_skills/dodge_1.tscn")
 var range_1 = preload("res://scenes/bosses/boss_1_skills/range.tscn")
@@ -16,6 +18,10 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
+	#phase 3 movement
+	if melee:
+		velocity.x += acceleration
 
 	move_and_slide()
 
@@ -53,7 +59,7 @@ func phase_2() -> void:
 	pass
 	
 func phase_3() -> void:
-	
+	melee = true
 	pass
 
 func _on_timer_timeout() -> void:
@@ -69,5 +75,28 @@ func _on_timer_timeout() -> void:
 	elif state_time < 21:
 		phase_3()
 		pass
+	
+	pass # Replace with function body.
+
+
+func _on_area_up_body_entered(body: Node2D) -> void:
+	if melee and body.name == "Outlaw":
+		melee = false
+		velocity.x = 0
+		# call animation
+		await get_tree().create_timer(.5).timeout
+		position.x = (get_viewport().size.x/2 - 75)
+	
+	pass # Replace with function body.
+
+
+func _on_area_down_body_entered(body: Node2D) -> void:
+	if melee and body.name == "Outlaw":
+		melee = false
+		velocity.x = 0
+		#attack
+		# call animation
+		await get_tree().create_timer(.5).timeout
+		position.x = (get_viewport().size.x/2 - 75)
 	
 	pass # Replace with function body.

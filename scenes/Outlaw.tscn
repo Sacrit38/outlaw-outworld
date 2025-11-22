@@ -9,6 +9,8 @@ size = Vector2(88, 128)
 size = Vector2(102, 48)
 
 [node name="Outlaw" type="CharacterBody2D"]
+collision_layer = 7
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(88, 128)

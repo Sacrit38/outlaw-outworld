@@ -92,7 +92,6 @@ scale = Vector2(9.791666, 9.791666)
 sprite_frames = SubResource("SpriteFrames_c5pw0")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.584207
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -102,7 +101,7 @@ shape = SubResource("RectangleShape2D_md266")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-61, 50)
 target_position = Vector2(-95, 0)
-collision_mask = 2
+collision_mask = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

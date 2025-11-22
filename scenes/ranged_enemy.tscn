@@ -24,5 +24,3 @@ position = Vector2(1865.0261, 5.2546773)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.25994873, -0.74005127)
 shape = SubResource("CircleShape2D_5rm4b")
-
-[node name="Node2D" type="Node2D" parent="."]

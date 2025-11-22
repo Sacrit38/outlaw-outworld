@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://fd54covheele" path="res://scripts/main.gd" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://b0h7u5efx0byp" path="res://scenes/Ground.tscn" id="1_f6udf"]
-[ext_resource type="PackedScene" uid="uid://bfkmq4ls11v6h" path="res://spawner.tscn" id="2_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bfkmq4ls11v6h" path="res://scenes/spawner.tscn" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bja4ssco6j824" path="res://scenes/Outlaw.tscn" id="3_3amdw"]
 [ext_resource type="Script" uid="uid://djjlnyuoulpl4" path="res://scripts/outlaw.gd" id="4_1xcnr"]
 [ext_resource type="PackedScene" uid="uid://bs3a1dkn53ajo" path="res://scenes/Ground2.tscn" id="5_3amdw"]

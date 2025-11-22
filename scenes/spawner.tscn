@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dhayg4wwyp7js" path="res://scripts/spawner.gd" id="1_yp5lu"]
 
 [node name="Spawner" type="Node2D"]
-position = Vector2(1075, 345)
 script = ExtResource("1_yp5lu")
 
 [node name="Timer" type="Timer" parent="."]

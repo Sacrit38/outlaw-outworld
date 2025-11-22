@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	
 	for obs in obstacle:
 		# obs.position.x += -speed * delta
-		if obs.position.x <= -(screen_size.x + 100):
+		if obs.position.x <= -(position.x +screen_size.x):
 			obstacle.erase(obs)
 			obs.queue_free()
 	pass
@@ -60,7 +60,7 @@ func generate_enemy():
 	# Add flying type if range 
 	if type == 1:
 		if randi() % obstacle_types.size() == 1:
-			enemy_y = -(screen_size.y/2) + (enemy_height * enemy_scale.y /2) + 150
+			enemy_y = -(screen_size.y/2) + (enemy_height * enemy_scale.y /2) + 100
 	
 	last_enemy = enemy
 	enemy.position = Vector2i(enemy_x, enemy_y)

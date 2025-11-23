@@ -79,7 +79,7 @@ func update_animation():
 
 func weapon_swap_effect() -> void:
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
-	await get_tree().create_timer(0.20).timeout
+	await get_tree().create_timer(0.05).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 0.9)
 
 func _ready():

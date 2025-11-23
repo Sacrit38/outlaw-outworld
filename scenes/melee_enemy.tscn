@@ -90,7 +90,7 @@ script = ExtResource("1_xnaus")
 position = Vector2(0, -7.6293945e-06)
 scale = Vector2(9.791666, 9.791666)
 sprite_frames = SubResource("SpriteFrames_c5pw0")
-animation = &"idle"
+animation = &"approach"
 autoplay = "idle"
 flip_h = true
 
@@ -99,8 +99,8 @@ position = Vector2(-1, 53.875)
 shape = SubResource("RectangleShape2D_md266")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-61, 50)
-target_position = Vector2(-95, 0)
+position = Vector2(-64, 50)
+target_position = Vector2(-588, -1)
 collision_mask = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

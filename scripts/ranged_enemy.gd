@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var muzzle = $Sprite2D/muzzle
 
 var stop = false
-var reload = 1.33
+var reload = .5
 const speed :float = 500.0
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Global.game_running:
 		# move into the scene
-		if !stop:
+		if stop:
 			reload -= delta
 			if reload <= 0.0:
 				fire()

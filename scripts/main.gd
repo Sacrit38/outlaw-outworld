@@ -45,6 +45,7 @@ func new_game():
 	$Ground.position = Vector2i(572,596)
 	$Ground2.position = Vector2i(1724,596)
 	viewportX = get_viewport().size.x
+	Global.game_running = false
 
 func start_cam() :
 	await get_tree().create_timer(1.0).timeout
@@ -68,10 +69,12 @@ func _process(delta: float) -> void:
 		
 		show_score()
 		show_high_score()
+		print(Global.game_running)
 	else:
 		if Input.is_action_just_pressed("jump_button"):
 			Global.game_running = true
 			$HUD.get_node("StartLabel").hide()
+		print(Global.game_running)
 
 func _physics_process(delta: float) -> void:
 	#Update Score

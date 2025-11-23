@@ -1,6 +1,7 @@
 extends Control
 
 func _ready() -> void:
+	get_tree().paused = false
 	$"../AnimationPlayer".play_backwards("blur")
 	hide() 
 
@@ -18,7 +19,12 @@ func show_game_over():
 
 func _on_restart_pressed() -> void:
 	get_tree().paused = false
+	$"../AnimationPlayer".play("blur")
+	hide()
+	Global.check_high_score()
 	get_tree().reload_current_scene()
+	Global.game_running = false
+	hide()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit() 

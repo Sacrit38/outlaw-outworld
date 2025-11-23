@@ -16,6 +16,10 @@ func _on_area_entered(hitbox):
 	if hitbox == null:
 		return
 		
-	if hitbox is melee_hitbox or hitbox is range_attack:
+	if hitbox is melee_hitbox:
 		if owner.has_method("delete"):
 			owner.delete(true)
+	
+	if hitbox is range_attack:
+		print("blocked")
+		$"../AnimatedSprite2D".play("hit")

@@ -38,7 +38,6 @@ func set_state(new_state):
 	
 	if state == new_state:
 		return
-	
 	state = new_state
 	animation_lock = true
 	

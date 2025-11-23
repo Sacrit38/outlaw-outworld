@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdaif8injkgbk"]
+[gd_scene load_steps=4 format=3 uid="uid://cdaif8injkgbk"]
 
 [ext_resource type="Script" uid="uid://c1kk3hj5pjk18" path="res://scripts/bosses/boss_1_skills/dodge_1.gd" id="1_dyxga"]
+[ext_resource type="Script" uid="uid://3tmbev0tsrex" path="res://scripts/bosses/boss_1_skills/dodge_1_hitbox.gd" id="2_fcovv"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_fcovv"]
 b = Vector2(1.0008681, 0)
@@ -10,7 +11,8 @@ script = ExtResource("1_dyxga")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 65
+collision_mask = 64
+script = ExtResource("2_fcovv")
 
 [node name="HitboxShape" type="CollisionShape2D" parent="HitBox"]
 scale = Vector2(1, 2)

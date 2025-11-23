@@ -14,10 +14,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Global.game_running:
 		if state == 1:
-			$HurtBox.position.y -= SPEED * delta
+			$Hitbox.position.y -= SPEED * delta
 			pass
 		if state == 2:
-			$HurtBox.position.y += SPEED * delta
+			$Hitbox.position.y += SPEED * delta
 			pass
 		if state == 3:
 			queue_free()

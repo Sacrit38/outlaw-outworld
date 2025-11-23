@@ -36,3 +36,8 @@ func fire():
 	bullet.rotation = rotation
 	
 	get_tree().root.add_child(bullet)
+	
+func delete(eliminated : bool) -> void:
+	if eliminated:
+		print("range eliminated")
+		queue_free()

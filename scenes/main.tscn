@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0am6kf1o8m5h"]
+[gd_scene load_steps=10 format=3 uid="uid://c0am6kf1o8m5h"]
 
 [ext_resource type="Script" uid="uid://fd54covheele" path="res://scripts/main.gd" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://b0h7u5efx0byp" path="res://scenes/Ground.tscn" id="1_f6udf"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dlqbsyqy602dc" path="res://scenes/background_s1.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bg51ltq0ybbwg" path="res://scenes/foreground_s1.tscn" id="7_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://cpiswo88l2wxj" path="res://scenes/hud.tscn" id="7_tipki"]
-[ext_resource type="PackedScene" path="res://scenes/Pause Menu.tscn" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://bnpo73sbmh7h7" path="res://scenes/Pause Menu.tscn" id="8_tipki"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_2wwxx")
@@ -28,6 +28,8 @@ position = Vector2(571, 596)
 
 [node name="Ground2" parent="." instance=ExtResource("5_3amdw")]
 position = Vector2(1723, 596)
+collision_layer = 1
+collision_mask = 2
 
 [node name="Outlaw" parent="." instance=ExtResource("3_3amdw")]
 position = Vector2(124, 478)

@@ -1,8 +1,13 @@
+class_name range_attack
 extends Area2D
 
 @export var screen_size: Vector2i
 @export var speed: float = 4200.0
 var dir: Vector2 = Vector2.RIGHT
+
+#func _init() -> void:
+	#collision_layer = 32
+	#collision_mask = 64
 
 func reversed():
 	dir = -dir

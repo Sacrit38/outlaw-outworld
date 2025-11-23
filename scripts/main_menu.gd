@@ -7,11 +7,6 @@ func _ready() -> void:
 	pausePanel.visible = false
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_option_button_up() -> void:
 	print("Settings clicked")
 	pass # Replace with function body.

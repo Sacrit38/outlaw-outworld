@@ -69,12 +69,10 @@ func _process(delta: float) -> void:
 		
 		show_score()
 		show_high_score()
-		print(Global.game_running)
 	else:
 		if Input.is_action_just_pressed("jump_button"):
 			Global.game_running = true
 			$HUD.get_node("StartLabel").hide()
-		print(Global.game_running)
 
 func _physics_process(delta: float) -> void:
 	#Update Score

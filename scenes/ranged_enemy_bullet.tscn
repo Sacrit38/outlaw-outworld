@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dy3n2vx324ioy"]
 
 [ext_resource type="Script" uid="uid://cbbbl7y8goeyl" path="res://scripts/ranged_enemy_bullet.gd" id="1_2nqmk"]
-[ext_resource type="Texture2D" uid="uid://tlo53boeuckl" path="res://sprites/placeholder_ranged_enemy_bullet.png" id="2_1n3r7"]
+[ext_resource type="Texture2D" uid="uid://dx31x7hh0v38s" path="res://assets/animations/FlyingEnemy/PROJECTILE S1.png" id="2_0nuwg"]
 [ext_resource type="Script" uid="uid://qoacrlyo51fm" path="res://scripts/ranged_enemy_bullet_hitbox.gd" id="3_0nuwg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7p6dy"]
@@ -12,9 +12,10 @@ collision_layer = 4
 script = ExtResource("1_2nqmk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -5.684342e-14)
-scale = Vector2(0.16161379, 0.16161382)
-texture = ExtResource("2_1n3r7")
+position = Vector2(22, 5)
+rotation = 0.90931654
+scale = Vector2(0.10243879, 0.102438815)
+texture = ExtResource("2_0nuwg")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

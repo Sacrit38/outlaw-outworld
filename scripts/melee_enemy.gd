@@ -2,6 +2,7 @@ extends Area2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+const speed :float = 500.0
 var state = STATE_IDLE
 var animation_lock = false
 
@@ -10,7 +11,7 @@ enum {
 	STATE_APPROACH,
 	STATE_HIT
 }
-const speed :float = 500.0
+
 
 func set_state(new_state):
 	if animation_lock == true:

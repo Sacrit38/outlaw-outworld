@@ -7,6 +7,7 @@ const SPEED :float = 500.0
 const SCORE_MODIFIER: int = 10
 var score: int
 var high_score: int
+@onready var game_over_screen = $GameOver/GameOver
 
 #set true to stop camera and look back
 static var stop_cam = false
@@ -30,6 +31,7 @@ func _ready() -> void:
 	score = 0
 	high_score = score
 	new_game()
+	$Outlaw.connect("game_over", self.game_over)
 
 func new_game():
 	$Outlaw.position = OUTLAW_START
@@ -64,3 +66,6 @@ func _physics_process(delta: float) -> void:
 	#Update Score
 	@warning_ignore("narrowing_conversion")
 	score += SPEED * delta
+
+func game_over():
+	game_over_screen.show_game_over()

@@ -92,8 +92,8 @@ const GRAVITY : int = 4200
 const JUMP_VELOCITY = -1800
 var Melee : bool = true 
 var can_attack: bool = true
-
 var Projectile = preload("uid://c08faj4cqcv8g") 
+signal game_over
 
 
 func shoot() -> void:
@@ -138,6 +138,9 @@ func _physics_process(delta: float) -> void:
 	if boss == boss_state.START_BOSS:
 		scale.x = -scale.x
 		boss = boss_state.BOSSING
+		
+	if health <= 0:
+		emit_signal("game_over") 
 	
 	update_animation()
 	move_and_slide()

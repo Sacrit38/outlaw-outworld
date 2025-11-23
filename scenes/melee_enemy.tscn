@@ -1,3 +1,8 @@
+[gd_scene load_steps=18 format=3 uid="uid://bkwdpgslvfnij"]
+
+[ext_resource type="Script" uid="uid://cgrm7a1cmr656" path="res://scripts/melee_enemy.gd" id="1_xnaus"]
+[ext_resource type="Texture2D" uid="uid://db0srg4uece2g" path="res://assets/animations/GroundEnemy/charge/charge.png" id="2_vaj5w"]
+[ext_resource type="Texture2D" uid="uid://bm2j8g7ttimbq" path="res://assets/animations/GroundEnemy/walk/walk.png" id="3_8age4"]
 [gd_scene load_steps=17 format=3 uid="uid://bkwdpgslvfnij"]
 
 [ext_resource type="Script" uid="uid://cgrm7a1cmr656" path="res://scripts/melee_enemy.gd" id="1_xnaus"]

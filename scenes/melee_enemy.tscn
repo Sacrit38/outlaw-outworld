@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cgrm7a1cmr656" path="res://scripts/melee_enemy.gd" id="1_xnaus"]
 [ext_resource type="Texture2D" uid="uid://dr62vd74cdiqc" path="res://assets/placeholder-ground-enemy.png" id="2_vaj5w"]
 [ext_resource type="Script" path="res://scripts/melee_enemy_hitbox.gd" id="3_vaj5w"]
-[ext_resource type="Script" path="res://scripts/melee_enemy_hurtbox.gd" id="4_8age4"]
+[ext_resource type="Script" uid="uid://806oefs3q4b0" path="res://scripts/melee_enemy_hurtbox.gd" id="4_8age4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8age4"]
 atlas = ExtResource("2_vaj5w")
@@ -128,3 +128,7 @@ script = ExtResource("4_8age4")
 [node name="HUrtboxShape" type="CollisionShape2D" parent="MeleeEnemy_Hurtbox"]
 position = Vector2(-1, 53.875)
 shape = SubResource("RectangleShape2D_md266")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

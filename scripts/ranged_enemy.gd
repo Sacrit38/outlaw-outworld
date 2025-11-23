@@ -16,10 +16,12 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if Global.game_running:
-		reload -= delta
-		if reload <= 0.0:
-			fire()
-			reload = fire_rate
+		# move into the scene
+		if !stop:
+			reload -= delta
+			if reload <= 0.0:
+				fire()
+				reload = fire_rate
 
 func _physics_process(_delta: float) -> void:
 	if Global.game_running:
@@ -40,4 +42,4 @@ func fire():
 func delete(eliminated : bool) -> void:
 	if eliminated:
 		print("range eliminated")
-		#queue_free()
+		queue_free()

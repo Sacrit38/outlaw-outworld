@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Global.game_running:
 		# move into the scene
-		if !stop:
+		if stop:
 			reload -= delta
 			if reload <= 0.0:
 				fire()

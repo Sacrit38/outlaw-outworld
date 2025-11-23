@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	if reload <= 0.0:
 		fire()
 		reload = fire_rate
-		
+
 func _physics_process(_delta: float) -> void:
 	
 	# move into the scene

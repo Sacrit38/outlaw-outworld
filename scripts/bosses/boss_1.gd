@@ -10,7 +10,9 @@ var dodge_1 = preload("res://scenes/bosses/boss_1_skills/dodge.tscn")
 var dodge_2 = preload("res://scenes/bosses/boss_1_skills/dodge_1.tscn")
 var range_1 = preload("res://scenes/bosses/boss_1_skills/range.tscn")
 
-func _ready() -> void:
+func start() -> void:
+	Main.move_cam = -1
+	Player.backward = true
 	position.x = -(get_viewport().size.x/2 - 75)
 	pass
 
@@ -74,6 +76,12 @@ func _on_timer_timeout() -> void:
 	elif state_time < 21:
 		phase_3()
 		pass
+	else :
+		Global.boss_defeated()
+		Global.next_chapter()
+		Main.move_cam = 1
+		Player.backward = false
+		queue_free()
 	
 	pass # Replace with function body.
 

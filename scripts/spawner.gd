@@ -3,8 +3,10 @@ extends Node2D
 # For spawning mechanism, if further
 var melee_enemy_scene = preload("res://scenes/melee_enemy.tscn")
 var ranged_enemy_scene = preload("res://scenes/ranged_enemy.tscn")
+var boss_enemy_scene = [preload("res://scenes/bosses/boss_1.tscn")]
 var obstacle_types := [melee_enemy_scene, ranged_enemy_scene]
 var flying_heights := [200, 390]
+var has_boss = false
 
 const outlaw_start := Vector2i(100, 510)
 const camera_start := Vector2i(576, 321)
@@ -22,6 +24,17 @@ func _ready() -> void:
 	ground_height = 40
 	pass # Replace with function body.
 
+func _process(_delta: float) -> void:
+	if Global.boss_phase && not has_boss:
+		for child in get_children():
+			child.queue_free()
+		var boss = boss_enemy_scene[Global.chapter - 1].instantiate()
+		get_parent().add_child(boss)
+		boss.start()
+		has_boss = true
+	if not Global.boss_phase && has_boss:
+		has_boss = false
+	pass
 
 func generate_enemy():
 	#generate ground obstacle
@@ -59,6 +72,6 @@ func add_obs(obs, x, y):
 
 
 func _on_timer_timeout() -> void:
-	if Global.game_running:
+	if Global.game_running && not Global.boss_phase:
 		generate_enemy()
 		pass # Replace with function body.

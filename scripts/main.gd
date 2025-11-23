@@ -1,4 +1,5 @@
 extends Node2D
+class_name Main
 
 var flying_heights := [200, 390]
 const OUTLAW_START := Vector2i(200, 510)
@@ -7,7 +8,7 @@ const SPEED :float = 500.0
 @onready var game_over_screen = $GameOver/GameOver
 
 #set true to stop camera and look back
-static var stop_cam = false
+static var move_cam = 0
 
 var blood_relic = false
 var heart_state = [preload("res://assets/health/dead.png"), preload("res://assets/health/1 heart .png"), preload("res://assets/health/2 hearts.png"), preload("res://assets/health/3 hearts .png"), preload("res://assets/health/4 hearts.png"), preload("res://assets/health/full hearts.png")]
@@ -46,20 +47,26 @@ func new_game():
 	$Ground2.position = Vector2i(1724,596)
 	viewportX = get_viewport().size.x
 
-func start_cam() :
-	await get_tree().create_timer(1.0).timeout
-	stop_cam = false
+func def_cam() :
+	await get_tree().create_timer(2.0).timeout
+	move_cam = 0
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Global.game_running:
 		$Outlaw.position.x += SPEED*delta
-		if stop_cam:
-			start_cam()
+		
+		if move_cam == -1:
+			def_cam()
+			$Camera2D.position.x += SPEED*delta/2
+		elif move_cam == 1:
+			def_cam()
+			$Camera2D.position.x += SPEED*delta*3/2
 		else :
 			$Camera2D.position.x += SPEED*delta
 		$Outlaw.actions()
+			
 		
 		if $Camera2D.position.x - $Ground.position.x > Global.screen_size.x:
 			$Ground.position.x += 1152*2
@@ -79,6 +86,8 @@ func _physics_process(delta: float) -> void:
 		#Update Score
 		@warning_ignore("narrowing_conversion")
 		Global.score += SPEED * delta
+		@warning_ignore("narrowing_conversion")
+		Global.threshold_var += SPEED * delta
 
 func health_view(_diff : int):
 	var health_ = health.get_health()

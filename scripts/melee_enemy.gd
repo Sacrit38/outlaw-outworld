@@ -42,17 +42,20 @@ func movement(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if Global.game_running:
 		if ray_cast_2d.is_colliding():
-			print("detect")
+			print("detected")
 			set_state(STATE_APPROACH)
 		else:
 			set_state(STATE_IDLE)
+		
 	
 	#move
 	movement(delta)
 	
+	
+
 func delete(eliminated : bool) -> void:
 	if eliminated:
-		print("range eliminated")
+		print("melee eliminated")
 		queue_free()
 
 

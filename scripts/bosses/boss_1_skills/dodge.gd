@@ -12,17 +12,18 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if state == 1:
-		$HurtBox.position.y -= SPEED * delta
+	if Global.game_running:
+		if state == 1:
+			$HurtBox.position.y -= SPEED * delta
+			pass
+		if state == 2:
+			$HurtBox.position.y += SPEED * delta
+			pass
+		if state == 3:
+			queue_free()
+			pass
+		
 		pass
-	if state == 2:
-		$HurtBox.position.y += SPEED * delta
-		pass
-	if state == 3:
-		queue_free()
-		pass
-	
-	pass
 
 func _on_timer_timeout() -> void:
 	state+=1

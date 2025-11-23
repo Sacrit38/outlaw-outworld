@@ -13,14 +13,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if state == 2:
-		collision.scale.x = get_viewport().size.x
+	if Global.game_running:
+		if state == 2:
+			collision.scale.x = get_viewport().size.x
+			pass
+		if state == 3:
+			queue_free()
+			pass
+		
 		pass
-	if state == 3:
-		queue_free()
-		pass
-	
-	pass
 
 func _on_timer_timeout() -> void:
 	state+=1

@@ -1,6 +1,7 @@
 extends ParallaxBackground
 
 const speed = 250;
+@onready var main = get_node("../Main")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -9,7 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$ParallaxLayer.motion_offset.x += speed * delta
-	$ParallaxLayer2.motion_offset.x += speed * delta
-	$ParallaxLayer3.motion_offset.x += speed * delta
-	$ParallaxLayer4.motion_offset.x += speed * delta
+	if Global.game_running:
+		$ParallaxLayer.motion_offset.x += speed * delta
+		$ParallaxLayer2.motion_offset.x += speed * delta
+		$ParallaxLayer3.motion_offset.x += speed * delta
+		$ParallaxLayer4.motion_offset.x += speed * delta

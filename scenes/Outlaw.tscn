@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bja4ssco6j824"]
+[gd_scene load_steps=37 format=3 uid="uid://bja4ssco6j824"]
 
 [ext_resource type="Script" uid="uid://djjlnyuoulpl4" path="res://scripts/outlaw.gd" id="1_ahkar"]
 [ext_resource type="Texture2D" uid="uid://i4chy624xpnk" path="res://assets/animations/scereus/run.png" id="1_gwqp1"]
@@ -55,6 +55,10 @@ region = Rect2(2615, 0, 2615, 2050)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fpdt1"]
 atlas = ExtResource("5_ojpt1")
 region = Rect2(0, 2050, 2615, 2050)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr1gc"]
+atlas = ExtResource("1_gwqp1")
+region = Rect2(0, 2048, 1400, 2048)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tbqd"]
 atlas = ExtResource("3_0dybn")
@@ -168,6 +172,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xr1gc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2tbqd")
 }, {
 "duration": 1.0,
@@ -236,10 +248,8 @@ script = ExtResource("1_ahkar")
 position = Vector2(-4, -3)
 scale = Vector2(0.08216065, 0.080731705)
 sprite_frames = SubResource("SpriteFrames_ojpt1")
-animation = &"hurt"
+animation = &"idle"
 autoplay = "run"
-frame = 2
-frame_progress = 1.0
 
 [node name="OutlawCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.4999981, -5.5)

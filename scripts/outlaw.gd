@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var animation_lock = false
-var state = STATE_RUN 
+var state = STATE_IDLE
 
 enum {
 	STATE_RUN,
@@ -10,7 +10,8 @@ enum {
 	STATE_FLOAT,
 	STATE_ATTACK,
 	STATE_RANGED,
-	STATE_HURT
+	STATE_HURT,
+	STATE_IDLE
 }
 
 enum boss_state{
@@ -56,6 +57,8 @@ func set_state(new_state):
 			$AnimatedSprite2D.play("ranged")
 		STATE_HURT:
 			$AnimatedSprite2D.play("hurt")
+		STATE_IDLE:
+			$AnimatedSprite2D.play("idle")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	animation_lock = false
@@ -73,9 +76,12 @@ func update_animation():
 		else :
 			if state != STATE_FALL:
 				set_state(STATE_FALL)
-	else:
+	elif Global.game_running:
 		if state != STATE_RUN:
 				set_state(STATE_RUN)
+	else:
+		if state != STATE_IDLE:
+			set_state(STATE_IDLE)
 
 func weapon_swap_effect() -> void:
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
@@ -83,7 +89,7 @@ func weapon_swap_effect() -> void:
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 0.9)
 
 func _ready():
-	set_state(STATE_RUN)
+	set_state(STATE_IDLE)
 
 const GRAVITY : int = 4200
 const JUMP_VELOCITY = -1800
@@ -125,17 +131,18 @@ func actions() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += GRAVITY * delta
-	
-	if is_on_floor():
-		# Handle jump.
-		if Input.is_action_just_pressed("jump_button") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
-			
-	if boss == boss_state.START_BOSS:
-		scale.x = -scale.x
-		boss = boss_state.BOSSING
-	
+	if Global.game_running:
+		if not is_on_floor():
+			velocity.y += GRAVITY * delta
+		
+		if is_on_floor():
+			# Handle jump.
+			if Input.is_action_just_pressed("jump_button") and is_on_floor():
+				velocity.y = JUMP_VELOCITY
+				
+		if boss == boss_state.START_BOSS:
+			scale.x = -scale.x
+			boss = boss_state.BOSSING
+		
 	update_animation()
 	move_and_slide()

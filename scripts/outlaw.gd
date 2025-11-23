@@ -120,7 +120,7 @@ func actions() -> void:
 		can_attack = false
 		if state != STATE_RANGED:
 			set_state(STATE_RANGED)
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.5).timeout
 		can_attack = true
 
 func _physics_process(delta: float) -> void:

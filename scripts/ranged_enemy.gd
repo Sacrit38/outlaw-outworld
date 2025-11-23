@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var muzzle = $Sprite2D/muzzle
 
 var stop = false
-var reload = 0.0
+var reload = 1.33
 const speed :float = 500.0
 
 func _ready() -> void:

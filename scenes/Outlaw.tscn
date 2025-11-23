@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bja4ssco6j824"]
+[gd_scene load_steps=51 format=3 uid="uid://bja4ssco6j824"]
 
 [ext_resource type="Script" uid="uid://djjlnyuoulpl4" path="res://scripts/outlaw.gd" id="1_ahkar"]
 [ext_resource type="Texture2D" uid="uid://i4chy624xpnk" path="res://assets/animations/scereus/run.png" id="1_gwqp1"]
@@ -7,8 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bffa3uavbkiru" path="res://assets/animations/scereus/jump.png" id="3_0dybn"]
 [ext_resource type="Texture2D" uid="uid://dwbg47pdt1dj5" path="res://assets/animations/scereus/ranged.png" id="5_fre60"]
 [ext_resource type="Texture2D" uid="uid://dj3tc1qxknsph" path="res://assets/animations/scereus/hurt.png" id="5_ojpt1"]
+[ext_resource type="Texture2D" uid="uid://bvyxsfucjto1i" path="res://assets/animations/scereus/slash/1.PNG" id="8_i3wc5"]
 [ext_resource type="Script" uid="uid://2c6v3s6c54mj" path="res://scripts/outlaw_hurtbox.gd" id="8_otwhs"]
-[ext_resource type="Script" path="res://scripts/melee_hitbox.gd" id="9_e5f5e"]
+[ext_resource type="Script" uid="uid://cipcideauy8yd" path="res://scripts/melee_hitbox.gd" id="9_e5f5e"]
+[ext_resource type="Texture2D" uid="uid://xve5c76f6tmb" path="res://assets/animations/scereus/slash/2.PNG" id="9_st1jw"]
+[ext_resource type="Texture2D" uid="uid://bny6re7oclmkb" path="res://assets/animations/scereus/slash/3.PNG" id="10_mnpi6"]
+[ext_resource type="Texture2D" uid="uid://bajm1e3m8uo1t" path="res://assets/animations/scereus/slash/4.PNG" id="11_5y3pq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0dybn"]
 atlas = ExtResource("2_0dybn")
@@ -113,6 +117,10 @@ region = Rect2(0, 2048, 1400, 2048)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bhnsi"]
 atlas = ExtResource("1_gwqp1")
 region = Rect2(1400, 2048, 1400, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffspw"]
+atlas = ExtResource("5_ojpt1")
+region = Rect2(0, 0, 2615, 2050)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ojpt1"]
 animations = [{
@@ -233,6 +241,64 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffspw")
+}],
+"loop": false,
+"name": &"swap",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ba0dr"]
+atlas = ExtResource("8_i3wc5")
+region = Rect2(0, 0, 2999, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52n6g"]
+atlas = ExtResource("9_st1jw")
+region = Rect2(0, 0, 2999, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4sku"]
+atlas = ExtResource("10_mnpi6")
+region = Rect2(0, 0, 2999, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svxmq"]
+atlas = ExtResource("11_5y3pq")
+region = Rect2(0, 0, 2999, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp7m6"]
+atlas = ExtResource("9_st1jw")
+region = Rect2(0, 0, 2999, 2048)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivc1t"]
+atlas = ExtResource("11_5y3pq")
+region = Rect2(0, 0, 1499, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p41gm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ba0dr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52n6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4sku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svxmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp7m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ivc1t")
+}],
+"loop": false,
+"name": &"default",
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utq4i"]
@@ -245,12 +311,19 @@ size = Vector2(86, 48)
 collision_layer = 2
 script = ExtResource("1_ahkar")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Scereus" type="AnimatedSprite2D" parent="."]
 position = Vector2(-4, -3)
 scale = Vector2(0.08216065, 0.080731705)
 sprite_frames = SubResource("SpriteFrames_ojpt1")
-animation = &"idle"
+animation = &"run"
 autoplay = "run"
+
+[node name="SlashEffect" type="AnimatedSprite2D" parent="."]
+position = Vector2(22.000004, 11)
+scale = Vector2(0.08520511, 0.08520511)
+sprite_frames = SubResource("SpriteFrames_p41gm")
+frame = 5
+frame_progress = 1.0
 
 [node name="OutlawCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.4999981, -5.5)
@@ -274,5 +347,5 @@ script = ExtResource("9_e5f5e")
 position = Vector2(86, 10)
 shape = SubResource("RectangleShape2D_smyh7")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="animation_finished" from="Scereus" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="Scereus" to="." method="_on_animated_sprite_2d_animation_looped"]

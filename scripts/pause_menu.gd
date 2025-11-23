@@ -35,10 +35,8 @@ func _on_restart_pressed() -> void:
 	resume()
 	Global.check_high_score()
 	get_tree().reload_current_scene()
-	var player = get_node("../../Outlaw")
-	if player.state != player.STATE_RUN:
-		player.state = player.STATE_RUN
 	Global.game_running = false
+	hide()
 
 
 func _on_quit_pressed() -> void:

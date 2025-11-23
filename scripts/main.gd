@@ -45,6 +45,7 @@ func new_game():
 	$Ground.position = Vector2i(572,596)
 	$Ground2.position = Vector2i(1724,596)
 	viewportX = get_viewport().size.x
+	Global.game_running = false
 
 func start_cam() :
 	await get_tree().create_timer(1.0).timeout

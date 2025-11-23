@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bnpo73sbmh7h7"]
+[gd_scene load_steps=10 format=3 uid="uid://douvols5p0nrj"]
 
-[ext_resource type="Script" uid="uid://b1jquxmapba2s" path="res://scripts/pause_menu.gd" id="1_751k3"]
-[ext_resource type="Shader" uid="uid://b7p26gj52wd76" path="res://shader/Pause Menu.gdshader" id="1_eqe7t"]
-[ext_resource type="FontFile" uid="uid://cmtqfnanwlrx4" path="res://fonts/Varnyx-Regular.ttf" id="1_oxbmk"]
+[ext_resource type="Script" uid="uid://b1pjggr3ypatq" path="res://scripts/game_over.gd" id="1_lj1s0"]
+[ext_resource type="Shader" uid="uid://b7p26gj52wd76" path="res://shader/Pause Menu.gdshader" id="2_1pr72"]
+[ext_resource type="FontFile" uid="uid://cmtqfnanwlrx4" path="res://fonts/Varnyx-Regular.ttf" id="3_dj0mq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_751k3"]
-shader = ExtResource("1_eqe7t")
+shader = ExtResource("2_1pr72")
 shader_parameter/lod = 0.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqe7t"]
@@ -40,7 +40,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PauseMenu/ColorRect:material:shader_parameter/lod")
+tracks/0/path = NodePath("GameOver/ColorRect:material:shader_parameter/lod")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,7 +52,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PauseMenu/PanelContainer:modulate")
+tracks/1/path = NodePath("GameOver/PanelContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -68,7 +68,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PauseMenu/ColorRect:material:shader_parameter/lod")
+tracks/0/path = NodePath("GameOver/ColorRect:material:shader_parameter/lod")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,7 +80,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PauseMenu/PanelContainer:modulate")
+tracks/1/path = NodePath("GameOver/PanelContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -98,21 +98,21 @@ _data = {
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
-[node name="PauseMenu" type="Control" parent="."]
+[node name="GameOver" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-script = ExtResource("1_751k3")
+script = ExtResource("1_lj1s0")
 
-[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
 material = SubResource("ShaderMaterial_751k3")
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="PanelContainer" type="PanelContainer" parent="PauseMenu"]
+[node name="PanelContainer" type="PanelContainer" parent="GameOver"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -129,46 +129,37 @@ grow_vertical = 2
 scale = Vector2(4, 4)
 theme_override_styles/panel = SubResource("StyleBoxFlat_eqe7t")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/PanelContainer"]
 layout_mode = 2
 
-[node name="Header" type="Label" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="Header" type="Label" parent="GameOver/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_oxbmk")
+theme_override_fonts/font = ExtResource("3_dj0mq")
 theme_override_font_sizes/font_size = 8
-text = "Pause"
+text = "Game Over"
 horizontal_alignment = 1
 
-[node name="subtext" type="Label" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="subtext" type="Label" parent="GameOver/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_oxbmk")
+theme_override_fonts/font = ExtResource("3_dj0mq")
 theme_override_font_sizes/font_size = 3
-text = "\"Taking a break, are we?\""
+text = "\"Your journey ends here, outlaw\""
 horizontal_alignment = 1
 
-[node name="resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="restart" type="Button" parent="GameOver/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_oxbmk")
-theme_override_font_sizes/font_size = 6
-theme_override_styles/normal = SubResource("StyleBoxFlat_751k3")
-text = "Resume"
-
-[node name="restart" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_oxbmk")
+theme_override_fonts/font = ExtResource("3_dj0mq")
 theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxFlat_751k3")
 text = "Restart"
 
-[node name="quit" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="quit" type="Button" parent="GameOver/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_oxbmk")
+theme_override_fonts/font = ExtResource("3_dj0mq")
 theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxFlat_751k3")
 text = "Quit
@@ -179,6 +170,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_86lni")
 }
 
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/resume" to="PauseMenu" method="_on_resume_pressed"]
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/restart" to="PauseMenu" method="_on_restart_pressed"]
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/quit" to="PauseMenu" method="_on_quit_pressed"]
+[connection signal="pressed" from="GameOver/PanelContainer/VBoxContainer/restart" to="GameOver" method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOver/PanelContainer/VBoxContainer/quit" to="GameOver" method="_on_quit_pressed"]

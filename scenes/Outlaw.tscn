@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bja4ssco6j824"]
+[gd_scene load_steps=39 format=3 uid="uid://bja4ssco6j824"]
 
 [ext_resource type="Script" uid="uid://djjlnyuoulpl4" path="res://scripts/outlaw.gd" id="1_ahkar"]
 [ext_resource type="Texture2D" uid="uid://i4chy624xpnk" path="res://assets/animations/scereus/run.png" id="1_gwqp1"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bffa3uavbkiru" path="res://assets/animations/scereus/jump.png" id="3_0dybn"]
 [ext_resource type="Texture2D" uid="uid://dwbg47pdt1dj5" path="res://assets/animations/scereus/ranged.png" id="5_fre60"]
 [ext_resource type="Texture2D" uid="uid://dj3tc1qxknsph" path="res://assets/animations/scereus/hurt.png" id="5_ojpt1"]
+[ext_resource type="Script" uid="uid://2c6v3s6c54mj" path="res://scripts/outlaw_hurtbox.gd" id="8_otwhs"]
+[ext_resource type="Script" path="res://scripts/melee_hitbox.gd" id="9_e5f5e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0dybn"]
 atlas = ExtResource("2_0dybn")
@@ -240,8 +242,7 @@ size = Vector2(87, 117)
 size = Vector2(86, 48)
 
 [node name="Outlaw" type="CharacterBody2D"]
-collision_layer = 7
-collision_mask = 11
+collision_layer = 2
 script = ExtResource("1_ahkar")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -255,8 +256,22 @@ autoplay = "run"
 position = Vector2(-0.4999981, -5.5)
 shape = SubResource("RectangleShape2D_utq4i")
 
-[node name="MeleeHitbox" type="CollisionShape2D" parent="."]
-position = Vector2(86, 3)
+[node name="OutlawHurtbox" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 32
+script = ExtResource("8_otwhs")
+
+[node name="OutlawShape" type="CollisionShape2D" parent="OutlawHurtbox"]
+position = Vector2(-0.4999981, -5.5)
+shape = SubResource("RectangleShape2D_utq4i")
+
+[node name="MeleeHitbox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 128
+script = ExtResource("9_e5f5e")
+
+[node name="Hitbox" type="CollisionShape2D" parent="MeleeHitbox"]
+position = Vector2(86, 10)
 shape = SubResource("RectangleShape2D_smyh7")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -6,8 +6,7 @@
 size = Vector2(1153, 50)
 
 [node name="Ground" type="StaticBody2D"]
-collision_layer = 3
-collision_mask = 3
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -23)

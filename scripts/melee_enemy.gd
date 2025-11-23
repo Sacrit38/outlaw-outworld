@@ -50,3 +50,12 @@ func _physics_process(delta: float) -> void:
 	#move
 	movement(delta)
 	
+func delete(eliminated : bool) -> void:
+	if eliminated:
+		print("range eliminated")
+		queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	delete(true)
+	pass # Replace with function body.

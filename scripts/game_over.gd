@@ -28,6 +28,8 @@ func _on_restart_pressed() -> void:
 	if player.state != player.STATE_RUN:
 		player.state = player.STATE_RUN
 	Global.game_running = false
+	Global.chapter = 1
+	Global.boss_phase = false
 
 func _on_quit_pressed() -> void:
 	get_tree().quit() 

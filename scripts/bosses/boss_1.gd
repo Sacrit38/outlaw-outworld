@@ -78,7 +78,7 @@ func _on_timer_timeout() -> void:
 		pass
 	else :
 		Global.boss_defeated()
-		Global.next_chapter()
+		#Global.next_chapter()
 		Main.move_cam = 1
 		Player.backward = false
 		queue_free()

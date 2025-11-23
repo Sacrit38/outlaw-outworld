@@ -19,15 +19,8 @@ func show_score():
 func show_high_score():
 	$HUD.get_node("HighScore").text = "HIGH SCORE: " + str(Global.high_score)
 
-
-# health signal receiver
-func _on_health_changed(diff: int):
-	print("Health changed by ", diff)
-
-func _on_max_health_changed(diff: int):
-	print("Max health changed by ", diff)
-
 func _on_health_depleted():
+	#add death / game over
 	print("Player died")
 	
 var viewportX
@@ -37,10 +30,10 @@ func _ready() -> void:
 	Global.score = 0
 	new_game()
 	
-	health.your_global_function()
+	#health.your_global_function()
 	
-	health.health_changed.connect(_on_health_changed)
-	health.max_health_changed.connect(_on_max_health_changed)
+	health.health_changed.connect(health_view)
+	health.max_health_changed.connect(health_view)
 	health.health_depleted.connect(_on_health_depleted)
 	
 
@@ -87,8 +80,7 @@ func _physics_process(delta: float) -> void:
 
 func health_view():
 	var health_ = health.get_health()
-	var ins = Sprite2D.new()
-	ins.position = Vector2(0, 0)
+	var ins = $HUD.get_node("Health")
 	
 	if blood_relic != false:
 		ins.texture = heart_state[health_]

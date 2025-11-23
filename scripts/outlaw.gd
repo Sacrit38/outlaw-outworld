@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 var animation_lock = false
 var state = STATE_IDLE
+var health: int = 5
+var can_take_damage: bool = true
 
 enum {
 	STATE_RUN,
@@ -90,13 +92,14 @@ func weapon_swap_effect() -> void:
 
 func _ready():
 	set_state(STATE_IDLE)
+	$MeleeHitbox/Hitbox.disabled = true
 
 const GRAVITY : int = 4200
 const JUMP_VELOCITY = -1800
 var Melee : bool = true 
 var can_attack: bool = true
-
 var Projectile = preload("uid://c08faj4cqcv8g") 
+signal game_over
 
 
 func shoot() -> void:
@@ -107,19 +110,18 @@ func shoot() -> void:
 	get_parent().add_child(projectile)
 
 func actions() -> void:
-	$MeleeHitbox.disabled = true
-	
 	if Input.is_action_just_pressed("weapon_swap"):
 		await weapon_swap_effect()
 		Melee = !Melee
 	
 	if Input.is_action_just_pressed("attack_button") and Melee and can_attack:
-		$MeleeHitbox.disabled = false
+		$MeleeHitbox/Hitbox.disabled = false
 		can_attack = false
 		if state != STATE_ATTACK:
 			set_state(STATE_ATTACK)
 		await get_tree().create_timer(0.5).timeout
 		can_attack = true
+		$MeleeHitbox/Hitbox.disabled = true
 	
 	elif Input.is_action_just_pressed("attack_button") and not Melee and can_attack:
 		shoot() 
@@ -143,6 +145,13 @@ func _physics_process(delta: float) -> void:
 		if boss == boss_state.START_BOSS:
 			scale.x = -scale.x
 			boss = boss_state.BOSSING
-		
+			
+	if health <= 0:
+		emit_signal("game_over") 
+	
 	update_animation()
 	move_and_slide()
+	
+func take_damage(amount: int) -> void:
+	health -= amount
+	print(str(health))

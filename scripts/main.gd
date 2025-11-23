@@ -4,6 +4,7 @@ var flying_heights := [200, 390]
 const OUTLAW_START := Vector2i(200, 510)
 const CAMERA_START := Vector2i(576, 321)
 const SPEED :float = 500.0
+@onready var game_over_screen = $GameOver/GameOver
 
 #set true to stop camera and look back
 static var stop_cam = false
@@ -29,6 +30,7 @@ var viewportX
 func _ready() -> void:
 	Global.score = 0
 	new_game()
+	$Outlaw.connect("game_over", self.game_over)
 	
 	#health.your_global_function()
 	
@@ -88,3 +90,6 @@ func health_view():
 		ins.texture = heart_blood_relic_state[health_]
 	
 	add_child(ins)
+
+func game_over():
+	game_over_screen.show_game_over()

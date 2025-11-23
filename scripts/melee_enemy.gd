@@ -50,3 +50,7 @@ func _physics_process(delta: float) -> void:
 	#move
 	movement(delta)
 	
+func delete(eliminated : bool) -> void:
+	if eliminated:
+		print("range eliminated")
+		#queue_free()

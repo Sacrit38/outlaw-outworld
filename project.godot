@@ -43,6 +43,17 @@ pause={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Ground"
+2d_physics/layer_2="Player Body"
+2d_physics/layer_3="Enemy Body"
+2d_physics/layer_4="Melee Hitbox"
+2d_physics/layer_5="Range Hitbox"
+2d_physics/layer_6="Enemy Hitbox"
+2d_physics/layer_7="Outlaw Hurtbox"
+2d_physics/layer_8="Enemy Hurtbox"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

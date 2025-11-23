@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Area2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -33,16 +33,20 @@ func set_state(new_state):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	set_state(STATE_IDLE)
+	
+func movement(delta: float) -> void:
+	position.x += -speed * delta
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if ray_cast_2d.is_colliding():
-		print("detect")
-		set_state(STATE_APPROACH)
-	else:
-		set_state(STATE_IDLE)
+	if Global.game_running:
+		if ray_cast_2d.is_colliding():
+			print("detect")
+			set_state(STATE_APPROACH)
+		else:
+			set_state(STATE_IDLE)
 	
 	#move
-	velocity.x = -speed
-	move_and_slide()
+	movement(delta)
 	

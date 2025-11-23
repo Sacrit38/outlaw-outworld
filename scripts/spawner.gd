@@ -26,14 +26,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# generate_enemy()
-	
-	for obs in obstacle:
-		# obs.position.x += -speed * delta
-		if obs.position.x <= -(position.x +screen_size.x):
-			obstacle.erase(obs)
-			obs.queue_free()
-	pass
+	if Global.game_running:
+		# generate_enemy()
+		
+		for obs in obstacle:
+			# obs.position.x += -speed * delta
+			if obs.position.x <= -(position.x +screen_size.x):
+				obstacle.erase(obs)
+				obs.queue_free()
+		pass
 
 
 func generate_enemy():
@@ -73,5 +74,6 @@ func add_obs(obs, x, y):
 
 
 func _on_timer_timeout() -> void:
-	generate_enemy()
-	pass # Replace with function body.
+	if Global.game_running:
+		generate_enemy()
+		pass # Replace with function body.

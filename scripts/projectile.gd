@@ -4,9 +4,12 @@ extends Area2D
 @export var speed: float = 4200.0
 var dir: Vector2 = Vector2.RIGHT
 
+func reversed():
+	dir = -dir
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position += dir * speed * delta
+	if Global.game_running:
+		position += dir * speed * delta
 	
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

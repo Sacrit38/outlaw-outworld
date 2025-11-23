@@ -1,11 +1,11 @@
 extends CharacterBody2D
 @export var bullet_scene: PackedScene
-@export  var fire_rate = 0.5
+@export  var fire_rate = 2.5
 
 @onready var muzzle = $Sprite2D/muzzle
 
 var stop = false
-var reload = 0.0
+var reload = 1.33
 const speed :float = 500.0
 
 func _ready() -> void:
@@ -15,19 +15,19 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	reload -= delta
-	if reload <= 0.0:
-		fire()
-		reload = fire_rate
-		
+	if Global.game_running:
+		reload -= delta
+		if reload <= 0.0:
+			fire()
+			reload = fire_rate
+
 func _physics_process(_delta: float) -> void:
-	
-	# move into the scene
-	if !stop:
-		velocity.x = -speed
-		move_and_slide()
-		pass
-		
+	if Global.game_running:
+		# move into the scene
+		if !stop:
+			velocity.x = -speed
+			move_and_slide()
+			pass
 
 func fire():
 	var bullet = bullet_scene.instantiate()

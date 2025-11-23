@@ -9,6 +9,7 @@ func _on_area_entered(hitbox):
 	if hitbox == null:
 		return
 	if hitbox is enemy_hitbox or hitbox is ranged_enemy_hitbox:
+		owner.set_state(owner.STATE_HURT)
 		if owner.has_method("take_damage"):
 			owner.take_damage(1)
 		

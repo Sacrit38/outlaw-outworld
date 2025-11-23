@@ -79,7 +79,7 @@ func update_animation():
 
 func weapon_swap_effect() -> void:
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 1)
-	await get_tree().create_timer(0.20).timeout
+	await get_tree().create_timer(0.05).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1, 0.9)
 
 func _ready():
@@ -120,7 +120,7 @@ func actions() -> void:
 		can_attack = false
 		if state != STATE_RANGED:
 			set_state(STATE_RANGED)
-		await get_tree().create_timer(1.0).timeout
+		await get_tree().create_timer(0.5).timeout
 		can_attack = true
 
 func _physics_process(delta: float) -> void:

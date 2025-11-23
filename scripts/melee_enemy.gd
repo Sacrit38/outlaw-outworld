@@ -52,4 +52,4 @@ func _physics_process(delta: float) -> void:
 func delete(eliminated : bool) -> void:
 	if eliminated:
 		print("range eliminated")
-		queue_free()
+		#queue_free()

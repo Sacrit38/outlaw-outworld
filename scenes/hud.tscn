@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpiswo88l2wxj"]
+[gd_scene load_steps=3 format=3 uid="uid://cpiswo88l2wxj"]
 
 [ext_resource type="FontFile" uid="uid://cmtqfnanwlrx4" path="res://fonts/Varnyx-Regular.ttf" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://c2qtw0kwerpd3" path="res://assets/health/full hearts.png" id="2_oo0fn"]
 
 [node name="HUD" type="CanvasLayer"]
 
@@ -35,3 +36,10 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_ahhtf")
 theme_override_font_sizes/font_size = 50
 text = "Press Space to Play"
+
+[node name="Health" type="TextureRect" parent="."]
+offset_left = 2.0
+offset_top = 56.0
+offset_right = 42.0
+offset_bottom = 96.0
+texture = ExtResource("2_oo0fn")

@@ -1,6 +1,7 @@
 extends ParallaxBackground
 
 const speed = 250;
+@onready var main = $".."
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

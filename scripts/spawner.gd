@@ -4,7 +4,6 @@ extends Node2D
 var melee_enemy_scene = preload("res://scenes/melee_enemy.tscn")
 var ranged_enemy_scene = preload("res://scenes/ranged_enemy.tscn")
 var obstacle_types := [melee_enemy_scene, ranged_enemy_scene]
-var obstacle : Array
 var flying_heights := [200, 390]
 
 const outlaw_start := Vector2i(100, 510)
@@ -22,19 +21,6 @@ func _ready() -> void:
 	screen_size = get_window().size
 	ground_height = 40
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Global.game_running:
-		# generate_enemy()
-		
-		for obs in obstacle:
-			# obs.position.x += -speed * delta
-			if obs.position.x <= -(position.x +screen_size.x):
-				obstacle.erase(obs)
-				obs.queue_free()
-		pass
 
 
 func generate_enemy():
@@ -70,7 +56,6 @@ func generate_enemy():
 func add_obs(obs, x, y):
 	obs.position = Vector2i(x, y)
 	add_child(obs)
-	obstacle.append(obs)
 
 
 func _on_timer_timeout() -> void:

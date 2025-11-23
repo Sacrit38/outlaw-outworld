@@ -1,4 +1,5 @@
 extends "res://scripts/melee_enemy.gd"
+class_name boss_rangeAttack
 
 @onready var ray_up: RayCast2D = $DetectUp
 @onready var ray_down: RayCast2D = $DetectDown

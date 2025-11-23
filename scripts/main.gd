@@ -23,6 +23,15 @@ func check_high_score():
 	if score > high_score:
 		high_score = score
 
+# health signal receiver
+func _on_health_changed(diff: int):
+	print("Health changed by ", diff)
+
+func _on_max_health_changed(diff: int):
+	print("Max health changed by ", diff)
+
+func _on_health_depleted():
+	print("Player died")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +40,11 @@ func _ready() -> void:
 	new_game()
 	
 	health.your_global_function()
+	
+	health.health_changed.connect(_on_health_changed)
+	health.max_health_changed.connect(_on_max_health_changed)
+	health.health_depleted.connect(_on_health_depleted)
+	
 
 func new_game():
 	$Outlaw.position = OUTLAW_START
@@ -58,13 +72,13 @@ func _physics_process(delta: float) -> void:
 	score += SPEED * delta
 
 func health_view():
-	var health = get_health()
+	var health_ = health.get_health()
 	var ins = Sprite2D.new()
 	ins.position = Vector2(0, 0)
 	
 	if blood_relic != false:
-		ins.texture = heart_state[health]
+		ins.texture = heart_state[health_]
 	else:
-		ins.texture = heart_blood_relic_state[health]
+		ins.texture = heart_blood_relic_state[health_]
 	
 	add_child(ins)

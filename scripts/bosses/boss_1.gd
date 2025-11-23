@@ -15,15 +15,16 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	if Global.game_running:
+		# Add the gravity.
+		if not is_on_floor():
+			velocity += get_gravity() * delta
 
-	#phase 3 movement
-	if melee:
-		velocity.x += acceleration
+		#phase 3 movement
+		if melee:
+			velocity.x += acceleration
 
-	move_and_slide()
+		move_and_slide()
 
 func phase_1() -> void:
 	var rando = randi_range(1, 3)

@@ -40,11 +40,12 @@ func movement(delta: float) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	if ray_cast_2d.is_colliding():
-		print("detect")
-		set_state(STATE_APPROACH)
-	else:
-		set_state(STATE_IDLE)
+	if Global.game_running:
+		if ray_cast_2d.is_colliding():
+			print("detect")
+			set_state(STATE_APPROACH)
+		else:
+			set_state(STATE_IDLE)
 	
 	#move
 	movement(delta)

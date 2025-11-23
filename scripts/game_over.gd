@@ -5,10 +5,11 @@ func _ready() -> void:
 	hide() 
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("restart"):
-		_on_restart_pressed()
-	elif Input.is_action_just_pressed("quit"):
-		_on_quit_pressed() 
+	#if Input.is_action_just_pressed("restart"):
+		#_on_restart_pressed()
+	#elif Input.is_action_just_pressed("quit"):
+		#_on_quit_pressed() 
+	pass
 
 func show_game_over():
 	get_tree().paused = true

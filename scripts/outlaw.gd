@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 var animation_lock = false
 var state = STATE_IDLE
-var health: int = 5
 var can_take_damage: bool = true
 
 enum {
@@ -146,12 +145,12 @@ func _physics_process(delta: float) -> void:
 			scale.x = -scale.x
 			boss = boss_state.BOSSING
 			
-	if health <= 0:
+	if health.get_health() <= 0:
 		emit_signal("game_over") 
 	
 	update_animation()
 	move_and_slide()
 	
 func take_damage(amount: int) -> void:
-	health -= amount
+	health.set_health(health.get_health()-amount)
 	print(str(health))

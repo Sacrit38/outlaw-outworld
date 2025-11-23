@@ -80,11 +80,11 @@ func _physics_process(delta: float) -> void:
 		@warning_ignore("narrowing_conversion")
 		Global.score += SPEED * delta
 
-func health_view():
+func health_view(_diff : int):
 	var health_ = health.get_health()
 	var ins = $HUD.get_node("Health")
 	
-	if blood_relic != false:
+	if !blood_relic:
 		ins.texture = heart_state[health_]
 	else:
 		ins.texture = heart_blood_relic_state[health_]

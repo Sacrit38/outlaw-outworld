@@ -13,6 +13,10 @@ var immortality_timer : Timer = null
 
 @export var health : int = max_health : set = set_health, get = get_health
 
+func _ready() -> void:
+	set_health(max_health)
+	pass
+
 func set_max_health(value: int):
 	var clamped_value = 1 if value <= 0 else value
 	
@@ -53,6 +57,9 @@ func set_health(value: int):
 		return
 	
 	var clamped_value = clampi(value, 0, max_health)
+	
+	print(clamped_value)
+	print(health)
 	
 	if clamped_value != health:
 		var difference = clamped_value - health

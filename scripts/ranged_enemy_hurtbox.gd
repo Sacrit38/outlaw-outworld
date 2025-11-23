@@ -2,7 +2,7 @@ extends Area2D
 
 
 # Called when the node enters the scene tree for the first time.
-func _process(delta: float) -> void:
+func _ready() -> void:
 	connect("area_entered", self._on_area_entered)
 	
 func _on_area_entered(hitbox):

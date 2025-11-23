@@ -9,7 +9,7 @@ extends Area2D
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _ready() -> void:
 	connect("area_entered", self._on_area_entered)
 	
 func _on_area_entered(hitbox):

@@ -67,9 +67,14 @@ func _process(delta: float) -> void:
 		elif $Camera2D.position.x - $Ground2.position.x > Global.screen_size.x:
 			$Ground2.position.x += 1152*2
 		
+		if not $AudioStreamPlayer.playing:
+			$AudioStreamPlayer.play()
+		
 		show_score()
 		show_high_score()
 	else:
+		if $AudioStreamPlayer.playing:
+			$AudioStreamPlayer.stop()
 		if Input.is_action_just_pressed("jump_button"):
 			Global.game_running = true
 			$HUD.get_node("StartLabel").hide()

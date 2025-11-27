@@ -72,6 +72,7 @@ func phase_2() -> void:
 	pass
 
 func phase_3() -> void:
+	set_state(STATE_MELEE)
 	melee = true
 	pass
 
@@ -95,23 +96,22 @@ func _on_timer_timeout() -> void:
 	pass # Replace with function body.
 
 
-func _on_area_up_body_entered(body: Node2D) -> void:
-	if melee and body.name == "Outlaw":
+func _on_area_up_area_entered(area: Area2D) -> void:
+	if melee and (area.name == "OutlawHurtbox" or area.name == "MeleeHitbox"):
 		melee = false
 		velocity.x = 0
-		# call animation
+		
 		await get_tree().create_timer(.5).timeout
 		position.x = -(get_viewport().size.x/2 - 75)
 	
 	pass # Replace with function body.
 
 
-func _on_area_down_body_entered(body: Node2D) -> void:
-	if melee and body.name == "Outlaw":
+func _on_area_down_area_entered(area: Node2D) -> void:
+	if melee and (area.name == "OutlawHurtbox" or area.name == "MeleeHitbox"):
 		melee = false
 		velocity.x = 0
 		#attack
-		# call animation
 		await get_tree().create_timer(.5).timeout
 		position.x = -(get_viewport().size.x/2 - 75)
 	

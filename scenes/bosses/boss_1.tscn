@@ -287,20 +287,20 @@ radius = 64.0
 height = 290.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ry2h"]
-size = Vector2(124, 223)
+size = Vector2(39, 223)
 
 [node name="Boss1" type="CharacterBody2D"]
-collision_layer = 5
-collision_mask = 3
+collision_layer = 4
+collision_mask = 73
 script = ExtResource("1_8ry2h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-0.99998856, -49.999996)
 scale = Vector2(0.14312504, 0.14312504)
 sprite_frames = SubResource("SpriteFrames_5551t")
-animation = &"rangePhase"
+animation = &"meleePhase"
 autoplay = "fly-walk"
-frame = 25
+frame = 13
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -312,21 +312,25 @@ wait_time = 3.0
 autostart = true
 
 [node name="AreaDown" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDown"]
-position = Vector2(138, -1.5)
+position = Vector2(96, -3)
 shape = SubResource("RectangleShape2D_8ry2h")
 
 [node name="AreaUp" type="Area2D" parent="."]
 position = Vector2(0, -237)
+collision_layer = 32
+collision_mask = 75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaUp"]
-position = Vector2(138, -1.5)
+position = Vector2(95.5, -1.5)
 shape = SubResource("RectangleShape2D_8ry2h")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="AreaDown" to="." method="_on_area_down_body_entered"]
-[connection signal="body_entered" from="AreaUp" to="." method="_on_area_up_body_entered"]
+[connection signal="area_entered" from="AreaDown" to="." method="_on_area_down_area_entered"]
+[connection signal="area_entered" from="AreaUp" to="." method="_on_area_up_area_entered"]

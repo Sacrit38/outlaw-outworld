@@ -98,8 +98,8 @@ func _ready():
 	set_state(STATE_IDLE)
 	$MeleeHitbox/Hitbox.disabled = true
 
-const GRAVITY : int = 4200
-const JUMP_VELOCITY = -1800
+const GRAVITY : int = 2400
+const JUMP_VELOCITY = -1100
 var Melee : bool = true 
 var can_attack: bool = true
 var Projectile = preload("uid://c08faj4cqcv8g") 

@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Global="*res://scripts/global.gd"
 health="*res://scripts/health.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 attack_button={

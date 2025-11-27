@@ -2,7 +2,7 @@ extends Node2D
 class_name Main
 
 var flying_heights := [200, 390]
-const OUTLAW_START := Vector2i(200, 510)
+const OUTLAW_START := Vector2i(200, 490)
 const CAMERA_START := Vector2i(576, 321)
 const SPEED :float = 500.0
 @onready var game_over_screen = $GameOver/GameOver
@@ -71,9 +71,9 @@ func _process(delta: float) -> void:
 			
 		
 		if $Camera2D.position.x - $Ground.position.x > Global.screen_size.x:
-			$Ground.position.x += 1152*2
+			$Ground.position.x += Global.screen_size.x*2
 		elif $Camera2D.position.x - $Ground2.position.x > Global.screen_size.x:
-			$Ground2.position.x += 1152*2
+			$Ground2.position.x += Global.screen_size.x*2
 		
 		show_score()
 		show_high_score()

@@ -32,7 +32,7 @@ func _ready() -> void:
 	Global.score = 0
 	Global.threshold_var = 0
 	new_game()
-	$Outlaw.connect("game_over", self.game_over)
+	#$Outlaw.connect("game_over", self.game_over)
 	
 	#health.your_global_function()
 	
@@ -100,6 +100,5 @@ func health_view(_diff : int):
 	else:
 		ins.texture = heart_blood_relic_state[health_]
 	
-
-func game_over():
-	game_over_screen.show_game_over()
+#func game_over():
+	#game_over_screen.show_game_over()

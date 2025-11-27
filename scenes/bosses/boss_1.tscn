@@ -65,9 +65,6 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_3kf36")
-}, {
-"duration": 1.0,
 "texture": ExtResource("9_lgt41")
 }, {
 "duration": 1.0,
@@ -98,6 +95,15 @@ animations = [{
 "texture": ExtResource("14_k28l5")
 }, {
 "duration": 1.0,
+"texture": ExtResource("13_nem6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_k28l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_k28l5")
+}, {
+"duration": 1.0,
 "texture": ExtResource("15_yvv2x")
 }, {
 "duration": 1.0,
@@ -114,10 +120,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("20_qljsj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3kf36")
 }],
-"loop": true,
+"loop": false,
 "name": &"dodgePhase",
-"speed": 12.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -140,7 +149,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fly-walk",
-"speed": 12.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -185,9 +194,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("34_ovhyf")
 }],
-"loop": true,
+"loop": false,
 "name": &"meleePhase",
-"speed": 12.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -268,7 +277,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("60_5ia5t")
 }],
-"loop": true,
+"loop": false,
 "name": &"rangePhase",
 "speed": 12.0
 }]
@@ -289,9 +298,8 @@ script = ExtResource("1_8ry2h")
 position = Vector2(-0.99998856, -49.999996)
 scale = Vector2(0.14312504, 0.14312504)
 sprite_frames = SubResource("SpriteFrames_5551t")
-animation = &"fly-walk"
+animation = &"dodgePhase"
 autoplay = "fly-walk"
-frame_progress = 0.18013074
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-14, -44)

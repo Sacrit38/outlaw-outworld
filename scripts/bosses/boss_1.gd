@@ -29,13 +29,14 @@ func _physics_process(delta: float) -> void:
 		#phase 3 movement
 		if melee:
 			velocity.x += acceleration
-
+		
+		update_animation()
 		move_and_slide()
 
 func phase_1() -> void:
 	#var rando = randi_range(1, 3)
 	#if rando == 1:
-		$AnimatedSprite2D.play("dodgePhase")
+		set_state(STATE_DODGE)
 		var skill_instance : Node2D = dodge_1.instantiate()
 		var player_transform : CollisionShape2D = get_parent().get_parent().get_node("Outlaw/OutlawCollision")
 		var parent : Node2D = get_parent()
@@ -56,7 +57,7 @@ func phase_1() -> void:
 	
 func phase_2() -> void:
 	var rando = randi_range(1, 2)
-	$AnimatedSprite2D.play("rangePhase")
+	set_state(STATE_RANGE)
 	if rando == 1:
 		var skill_instance : Node2D = range_1.instantiate()
 		skill_instance.global_position = Vector2(-(get_viewport().size.x/2) - 50, (get_viewport().size.y/3)  - 100)

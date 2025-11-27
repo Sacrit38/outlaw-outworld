@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://c8jwdykkjq26p"]
 
 [ext_resource type="Script" uid="uid://sjg8og56anrs" path="res://scripts/bosses/boss_1_skills/dodge.gd" id="1_as8ox"]
-[ext_resource type="Script" uid="uid://ct105vqobok0c" path="res://scripts/bosses/boss_1_skills/dodge_hitbox.gd" id="2_smo7j"]
+[ext_resource type="Script" path="res://scripts/bosses/boss_1_skills/dodge_hitbox.gd" id="2_smo7j"]
 [ext_resource type="Texture2D" uid="uid://doldkxse2m15n" path="res://assets/animations/boss/attack-dodge-1/1.png" id="3_h243x"]
 [ext_resource type="Texture2D" uid="uid://ck6yetp3x3qnc" path="res://assets/animations/boss/attack-dodge-1/2.png" id="4_opbn0"]
 [ext_resource type="Texture2D" uid="uid://p1f1k1p0hkbe" path="res://assets/animations/boss/attack-dodge-1/3.png" id="5_forn8"]
@@ -81,7 +81,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 script = ExtResource("1_as8ox")
 
 [node name="Hitbox" type="Area2D" parent="."]

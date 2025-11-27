@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0am6kf1o8m5h"]
+[gd_scene load_steps=12 format=3 uid="uid://c0am6kf1o8m5h"]
 
 [ext_resource type="Script" uid="uid://fd54covheele" path="res://scripts/main.gd" id="1_2wwxx"]
 [ext_resource type="PackedScene" uid="uid://b0h7u5efx0byp" path="res://scenes/Ground.tscn" id="1_f6udf"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cpiswo88l2wxj" path="res://scenes/hud.tscn" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://bnpo73sbmh7h7" path="res://scenes/pause_menu.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://douvols5p0nrj" path="res://scenes/Game Over.tscn" id="10_choun"]
+[ext_resource type="AudioStream" uid="uid://cut8pyuoxy6mr" path="res://sounds/bgm.ogg" id="11_ya4ey"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_2wwxx")
@@ -50,3 +51,7 @@ position = Vector2(200, 490)
 [node name="Pause" parent="." instance=ExtResource("8_tipki")]
 
 [node name="GameOver" parent="." instance=ExtResource("10_choun")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ya4ey")
+parameters/looping = true

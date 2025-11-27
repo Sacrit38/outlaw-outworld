@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 			$Hitbox.position.y -= SPEED * delta
 			pass
 		if state == 4:
-			$Hitbox.position.y += SPEED * 2 * delta
+			$Hitbox.position.y += SPEED * 4 * delta
 			pass
 		if state == 5:
 			queue_free()

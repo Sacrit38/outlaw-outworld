@@ -70,10 +70,10 @@ func phase_3() -> void:
 
 func _on_timer_timeout() -> void:
 	state_time+=1
-	if state_time < 10:
+	if state_time < 5:
 		phase_1()
 		pass
-	elif state_time < 16:
+	elif state_time < 15:
 		phase_2()
 		pass
 	elif state_time < 21:

@@ -23,7 +23,7 @@ func _ready() -> void:
 	get_window().connect("size_changed", _on_size_changed)
 	
 func _process(_delta: float) -> void:
-	if threshold_var/SCORE_MODIFIER > threshold[chapter-1]:
+	if threshold_var > threshold[chapter-1]:
 		boss_phase = true
 		pass
 	pass

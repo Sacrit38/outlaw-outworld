@@ -35,7 +35,8 @@ func boss_defeated():
 	boss_phase = false
 	
 func next_chapter():
-	chapter += 1
+	threshold_var = 0
+	#chapter += 1
 	#somthin somthin bla bla bla
 	
 func _on_size_changed():

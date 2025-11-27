@@ -24,13 +24,21 @@ position = Vector2(576, 321)
 [node name="Spawner" parent="Camera2D" instance=ExtResource("2_tefeu")]
 position = Vector2(700, 0)
 
+[node name="Ground" parent="Camera2D" instance=ExtResource("1_f6udf")]
+visible = false
+position = Vector2(0, 274)
+
 [node name="Ground" parent="." instance=ExtResource("1_f6udf")]
+visible = false
 position = Vector2(571, 596)
+collision_layer = 0
+collision_mask = 0
 
 [node name="Ground2" parent="." instance=ExtResource("5_3amdw")]
+visible = false
 position = Vector2(1723, 596)
-collision_layer = 1
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 
 [node name="Outlaw" parent="." instance=ExtResource("3_3amdw")]
 position = Vector2(200, 490)

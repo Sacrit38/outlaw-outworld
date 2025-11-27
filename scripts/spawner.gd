@@ -18,12 +18,13 @@ var ground_height : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	screen_size = get_window().size
-	ground_height = 40
+	var ground : StaticBody2D = $"../../Ground"
+	ground_height = (ground.get_node("CollisionShape2D").shape.size.y/2) * (ground.global_scale.y/2)
 	pass # Replace with function body.
 
 
 func generate_enemy():
+	screen_size = get_viewport_rect().size
 	#generate ground obstacle
 	var type = randi() % obstacle_types.size()
 	var enemy_type = obstacle_types[type]
@@ -42,12 +43,12 @@ func generate_enemy():
 		enemy_scale = enemy.get_node("Sprite2D").scale
 	
 	var enemy_x : int = screen_size.x + 100
-	var enemy_y : int = (screen_size.y/2) - ground_height - (enemy_height * enemy_scale.y /2) + 5
+	var enemy_y : int = (screen_size.y/2) - ground_height - (enemy_height * enemy_scale.y /2) - 10
 	
 	# Add flying type if range 
 	if type == 1:
 		if randi() % obstacle_types.size() == 1:
-			enemy_y = -(screen_size.y/2) + (enemy_height * enemy_scale.y /2) + 100
+			enemy_y -= 235
 	
 	last_enemy = enemy
 	enemy.position = Vector2i(enemy_x, enemy_y)

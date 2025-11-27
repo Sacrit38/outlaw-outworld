@@ -63,9 +63,9 @@ func _process(delta: float) -> void:
 		$Outlaw.actions()
 		
 		if $Camera2D.position.x - $Ground.position.x > Global.screen_size.x:
-			$Ground.position.x += 1152*2
+			$Ground.position.x += Global.screen_size.x*2
 		elif $Camera2D.position.x - $Ground2.position.x > Global.screen_size.x:
-			$Ground2.position.x += 1152*2
+			$Ground2.position.x += Global.screen_size.x*2
 		
 		show_score()
 		show_high_score()

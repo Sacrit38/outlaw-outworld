@@ -8,9 +8,11 @@ b = Vector2(1.0008681, 0)
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dyxga")
 
-[node name="HurtBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 65
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+[node name="HitboxShape" type="CollisionShape2D" parent="HitBox"]
 scale = Vector2(1, 2)
 shape = SubResource("SegmentShape2D_fcovv")
 

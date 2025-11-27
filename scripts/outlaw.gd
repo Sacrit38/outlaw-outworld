@@ -1,10 +1,16 @@
 extends CharacterBody2D
+class_name Player
 
 var animation_lock = false
 var state = STATE_IDLE
 var can_take_damage: bool = true
 @onready var scereus: AnimatedSprite2D = $Scereus
 @onready var slash_effect: AnimatedSprite2D = $SlashEffect
+@onready var hurt_audio: AudioStreamPlayer2D = $Audio/hurt
+@onready var shoot_audio: AudioStreamPlayer2D = $Audio/shoot
+@onready var swap_audio: AudioStreamPlayer2D = $Audio/swap
+@onready var melee_audio: AudioStreamPlayer2D = $Audio/melee
+@onready var jump_audio: AudioStreamPlayer2D = $Audio/jump
 
 enum {
 	STATE_RUN,
@@ -18,21 +24,17 @@ enum {
 	#STATE_SWAP
 }
 
-enum boss_state{
-	START_BOSS,
-	BOSSING,
-	END_BOSS,
-	NO_BOSS
-}
-# START_BOSS to test boss
-static var boss = boss_state.NO_BOSS
+static var backward = false
+var is_backward = false
 
 func set_state(new_state):
 	if Input.is_action_just_pressed("attack_button") and Melee and not is_on_floor():
 		scereus.play("attack")
+		slash_effect.play("default")
 		return
 	
 	if Input.is_action_just_pressed("attack_button") and not Melee and not is_on_floor():
+		#print("ranged animation")
 		scereus.play("ranged")
 		return
 	
@@ -46,9 +48,10 @@ func set_state(new_state):
 	
 	match state:
 		STATE_RUN:
-			animation_lock = false
+			animation_lock = false 
 			scereus.play("run")
 		STATE_JUMP:
+			jump_audio.play()
 			scereus.play("jump")
 		STATE_FALL:
 			scereus.play("fall")
@@ -56,10 +59,15 @@ func set_state(new_state):
 			scereus.play("float")
 		STATE_ATTACK:
 			scereus.play("attack")
+			melee_audio.pitch_scale = randf_range(0.85, 1.15)
+			melee_audio.play()
 			slash_effect.play("default")
 		STATE_RANGED:
+			shoot_audio.pitch_scale = randf_range(0.85, 1.15)
+			shoot_audio.play()
 			scereus.play("ranged")
 		STATE_HURT:
+			hurt_audio.play()
 			scereus.play("hurt")
 		STATE_IDLE:
 			scereus.play("idle")
@@ -98,13 +106,15 @@ func weapon_swap_effect() -> void:
 	scereus.modulate = Color(1, 1, 1, 1)
 	await get_tree().create_timer(0.05).timeout
 	scereus.modulate = Color(1, 1, 1, 0.9)
+	swap_audio.pitch_scale = randf_range(0.85, 1.15)
+	swap_audio.play()
 
 func _ready():
 	set_state(STATE_IDLE)
 	$MeleeHitbox/Hitbox.disabled = true
 
-const GRAVITY : int = 4200
-const JUMP_VELOCITY = -1800
+const GRAVITY : int = 2400
+const JUMP_VELOCITY = -1100
 var Melee : bool = true 
 var can_attack: bool = true
 var Projectile = preload("uid://c08faj4cqcv8g") 
@@ -114,7 +124,7 @@ signal game_over
 func shoot() -> void:
 	var projectile = Projectile.instantiate()
 	projectile.global_position = global_position
-	if boss == boss_state.BOSSING:
+	if backward:
 		projectile.reversed()
 	get_parent().add_child(projectile)
 
@@ -127,6 +137,8 @@ func actions() -> void:
 	if Input.is_action_just_pressed("attack_button") and Melee and can_attack:
 		$MeleeHitbox/Hitbox.disabled = false
 		can_attack = false
+		melee_audio.pitch_scale = randf_range(0.85, 1.15)
+		melee_audio.play()
 		if state != STATE_ATTACK:
 			set_state(STATE_ATTACK)
 			#play_slash_effect()
@@ -135,7 +147,10 @@ func actions() -> void:
 		$MeleeHitbox/Hitbox.disabled = true
 	
 	elif Input.is_action_just_pressed("attack_button") and not Melee and can_attack:
+		print("ranged")
 		shoot() 
+		shoot_audio.pitch_scale = randf_range(0.85, 1.15)
+		shoot_audio.play()
 		can_attack = false
 		if state != STATE_RANGED:
 			set_state(STATE_RANGED)
@@ -153,9 +168,9 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("jump_button") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
 				
-		if boss == boss_state.START_BOSS:
-			scale.x = -scale.x
-			boss = boss_state.BOSSING
+		if backward != is_backward:
+			scale.x = -1
+			is_backward = backward
 			
 	if health.get_health() <= 0:
 		emit_signal("game_over") 

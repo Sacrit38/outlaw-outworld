@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7wsn53g7vu2m"]
+[gd_scene load_steps=10 format=3 uid="uid://bnpo73sbmh7h7"]
 
 [ext_resource type="Script" uid="uid://b1jquxmapba2s" path="res://scripts/pause_menu.gd" id="1_751k3"]
 [ext_resource type="Shader" uid="uid://b7p26gj52wd76" path="res://shader/Pause Menu.gdshader" id="1_eqe7t"]
@@ -52,7 +52,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PauseMenu/PanelContainer:modulate")
+tracks/1/path = NodePath("PauseMenu/PausedMenu:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -80,7 +80,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PauseMenu/PanelContainer:modulate")
+tracks/1/path = NodePath("PauseMenu/PausedMenu:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -101,9 +101,17 @@ _data = {
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_751k3")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu"]
@@ -112,7 +120,7 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="PanelContainer" type="PanelContainer" parent="PauseMenu"]
+[node name="PausedMenu" type="PanelContainer" parent="PauseMenu"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -120,33 +128,34 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -187.0
-offset_right = -70.0
-offset_bottom = -97.0
+offset_left = -228.0
+offset_top = -276.0
+offset_right = -113.0
+offset_bottom = -142.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
 theme_override_styles/panel = SubResource("StyleBoxFlat_eqe7t")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PausedMenu"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
-[node name="Header" type="Label" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="Header" type="Label" parent="PauseMenu/PausedMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_oxbmk")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 14
 text = "Pause"
 horizontal_alignment = 1
 
-[node name="subtext" type="Label" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="subtext" type="Label" parent="PauseMenu/PausedMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_oxbmk")
 theme_override_font_sizes/font_size = 3
 text = "\"Taking a break, are we?\""
 horizontal_alignment = 1
 
-[node name="resume" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="resume" type="Button" parent="PauseMenu/PausedMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -155,7 +164,7 @@ theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxFlat_751k3")
 text = "Resume"
 
-[node name="restart" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="restart" type="Button" parent="PauseMenu/PausedMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -164,7 +173,7 @@ theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxFlat_751k3")
 text = "Restart"
 
-[node name="quit" type="Button" parent="PauseMenu/PanelContainer/VBoxContainer"]
+[node name="quit" type="Button" parent="PauseMenu/PausedMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -179,6 +188,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_86lni")
 }
 
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/resume" to="PauseMenu" method="_on_resume_pressed"]
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/restart" to="PauseMenu" method="_on_restart_pressed"]
-[connection signal="pressed" from="PauseMenu/PanelContainer/VBoxContainer/quit" to="PauseMenu" method="_on_quit_pressed"]
+[connection signal="pressed" from="PauseMenu/PausedMenu/VBoxContainer/resume" to="PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/PausedMenu/VBoxContainer/restart" to="PauseMenu" method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/PausedMenu/VBoxContainer/quit" to="PauseMenu" method="_on_quit_pressed"]

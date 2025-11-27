@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://scripts/global.gd"
 health="*res://scripts/health.gd"
+Option="*res://scripts/option.gd"
 
 [display]
 
@@ -60,5 +61,11 @@ pause={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=2
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+anti_aliasing/canvas_textures/default_texture_filter=1
+anti_aliasing/size/viewport_height=648
+anti_aliasing/size/viewport_width=1152
+anti_aliasing/stretch/mode="canvas_items"
+anti_aliasing/stretch/aspect="keep_width"

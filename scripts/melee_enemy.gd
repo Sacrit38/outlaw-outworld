@@ -1,6 +1,7 @@
 extends Area2D
 @onready var ray_cast_2d: RayCast2D = $RayCast2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 const speed :float = 500.0
 var state = STATE_IDLE
@@ -62,12 +63,11 @@ func _physics_process(delta: float) -> void:
 
 func delete(eliminated : bool) -> void:
 	if eliminated:
-		print("melee eliminated")
-		queue_free()
+		animation_player.play("dead")
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	delete(true)
+	queue_free()
 	pass # Replace with function body.	
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c6amlu6fxbdxq"]
+[gd_scene load_steps=16 format=3 uid="uid://c6amlu6fxbdxq"]
 
 [ext_resource type="Script" uid="uid://dqsrshqjeiwrq" path="res://scripts/ranged_enemy.gd" id="1_alsgf"]
 [ext_resource type="PackedScene" uid="uid://dy3n2vx324ioy" path="res://scenes/ranged_enemy_bullet.tscn" id="2_5rm4b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c0e43pemx81s0" path="res://assets/animations/FlyingEnemy/FE2.PNG" id="4_2ls4a"]
 [ext_resource type="Script" uid="uid://dt3spkvcp1ai4" path="res://scripts/ranged_enemy_hurtbox.gd" id="4_ptmmb"]
 [ext_resource type="Texture2D" uid="uid://on3r3g6etwbr" path="res://assets/animations/FlyingEnemy/ATTACK (hold).PNG" id="5_w150n"]
+[ext_resource type="AudioStream" uid="uid://bmm3sf3jniysr" path="res://assets/sound/enemy_hurt.wav" id="7_2ls4a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dvjff"]
 atlas = ExtResource("3_nqoy7")
@@ -44,6 +45,104 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_5rm4b"]
 radius = 46.09772
 
+[sub_resource type="Animation" id="Animation_2ls4a"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio/HitDead:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.23333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_w150n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio/HitDead:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvjff"]
+_data = {
+&"RESET": SubResource("Animation_w150n"),
+&"dead": SubResource("Animation_2ls4a")
+}
+
 [node name="RangedEnemy" type="CharacterBody2D"]
 collision_layer = 4
 script = ExtResource("1_alsgf")
@@ -63,6 +162,7 @@ rotation = -3.1415925
 scale = Vector2(0.049468435, 0.049468435)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0.25994873, -0.74005127)
 shape = SubResource("CircleShape2D_5rm4b")
 
@@ -74,6 +174,17 @@ script = ExtResource("4_ptmmb")
 [node name="HurtboxShape" type="CollisionShape2D" parent="RangedEnemy_Hurtbox"]
 position = Vector2(0.25994873, -0.74005127)
 shape = SubResource("CircleShape2D_5rm4b")
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="HitDead" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("7_2ls4a")
+volume_db = -8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dvjff")
+}
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]

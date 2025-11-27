@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnpo73sbmh7h7"]
+[gd_scene load_steps=10 format=3 uid="uid://bnpo73sbmh7h7"]
 
 [ext_resource type="Script" uid="uid://b1jquxmapba2s" path="res://scripts/pause_menu.gd" id="1_751k3"]
 [ext_resource type="Shader" uid="uid://b7p26gj52wd76" path="res://shader/Pause Menu.gdshader" id="1_eqe7t"]
@@ -20,22 +20,6 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_751k3"]
-content_margin_left = 2.0
-content_margin_top = 4.0
-content_margin_right = 2.0
-content_margin_bottom = 4.0
-bg_color = Color(0.6039216, 0.8235294, 0.85490197, 1)
-border_width_left = 1
-border_width_top = 2
-border_width_right = 1
-border_width_bottom = 2
-border_color = Color(0.43529412, 0.6392157, 0.65882355, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ioox3"]
 content_margin_left = 2.0
 content_margin_top = 4.0
 content_margin_right = 2.0
@@ -117,9 +101,17 @@ _data = {
 [node name="PauseMenu" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = 576.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_751k3")
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu"]
@@ -136,10 +128,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -196.0
-offset_right = -70.0
-offset_bottom = -88.0
+offset_left = -228.0
+offset_top = -276.0
+offset_right = -113.0
+offset_bottom = -142.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
@@ -147,11 +139,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_eqe7t")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/PausedMenu"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="Header" type="Label" parent="PauseMenu/PausedMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_oxbmk")
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 14
 text = "Pause"
 horizontal_alignment = 1
 
@@ -180,15 +173,6 @@ theme_override_font_sizes/font_size = 6
 theme_override_styles/normal = SubResource("StyleBoxFlat_751k3")
 text = "Restart"
 
-[node name="option" type="Button" parent="PauseMenu/PausedMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_oxbmk")
-theme_override_font_sizes/font_size = 6
-theme_override_styles/normal = SubResource("StyleBoxFlat_ioox3")
-text = "Option"
-
 [node name="quit" type="Button" parent="PauseMenu/PausedMenu/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
@@ -199,69 +183,6 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_751k3")
 text = "Quit
 "
 
-[node name="OptionMenu" type="PanelContainer" parent="PauseMenu"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -144.0
-offset_top = -196.0
-offset_right = -70.0
-offset_bottom = -88.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(4, 4)
-theme_override_styles/panel = SubResource("StyleBoxFlat_eqe7t")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/OptionMenu"]
-layout_mode = 2
-
-[node name="Header" type="Label" parent="PauseMenu/OptionMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_oxbmk")
-theme_override_font_sizes/font_size = 8
-text = "Option"
-horizontal_alignment = 1
-
-[node name="subtext" type="Label" parent="PauseMenu/OptionMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_oxbmk")
-theme_override_font_sizes/font_size = 3
-text = "Enter Text"
-horizontal_alignment = 1
-
-[node name="subtext2" type="Label" parent="PauseMenu/OptionMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_oxbmk")
-theme_override_font_sizes/font_size = 3
-text = "Enter Text"
-horizontal_alignment = 1
-
-[node name="volume" type="HSlider" parent="PauseMenu/OptionMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="subtext3" type="Label" parent="PauseMenu/OptionMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_oxbmk")
-theme_override_font_sizes/font_size = 3
-text = "Enter Text"
-horizontal_alignment = 1
-
-[node name="mute" type="CheckBox" parent="PauseMenu/OptionMenu/VBoxContainer"]
-layout_mode = 2
-
-[node name="back" type="Button" parent="PauseMenu/OptionMenu/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.18039216, 0.18039216, 0.18039216, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_oxbmk")
-theme_override_font_sizes/font_size = 6
-theme_override_styles/normal = SubResource("StyleBoxFlat_751k3")
-text = "Back"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_86lni")
@@ -269,8 +190,4 @@ libraries = {
 
 [connection signal="pressed" from="PauseMenu/PausedMenu/VBoxContainer/resume" to="PauseMenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/PausedMenu/VBoxContainer/restart" to="PauseMenu" method="_on_restart_pressed"]
-[connection signal="pressed" from="PauseMenu/PausedMenu/VBoxContainer/option" to="PauseMenu" method="_on_option_pressed"]
 [connection signal="pressed" from="PauseMenu/PausedMenu/VBoxContainer/quit" to="PauseMenu" method="_on_quit_pressed"]
-[connection signal="changed" from="PauseMenu/OptionMenu/VBoxContainer/volume" to="PauseMenu" method="_on_volume_value_changed"]
-[connection signal="toggled" from="PauseMenu/OptionMenu/VBoxContainer/mute" to="PauseMenu" method="_on_mute_toggled"]
-[connection signal="pressed" from="PauseMenu/OptionMenu/VBoxContainer/back" to="PauseMenu" method="_on_back_option_pressed"]

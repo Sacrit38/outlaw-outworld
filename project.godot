@@ -22,8 +22,7 @@ health="*res://scripts/health.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
-window/stretch/aspect="keep_width"
+window/stretch/mode="viewport"
 
 [input]
 

@@ -1,25 +1,23 @@
 extends Node2D
 
-const SPEED = 100
+const SPEED = 200
 var state : int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Timer.start()
 	$AnimatedSprite2D.play()
-	var visible_rect_size = get_viewport().size
-	print("Visible viewport size: " + str(visible_rect_size.x) + "x" + str(visible_rect_size.y))
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Global.game_running:
-		if state == 1:
-			$HurtBox.position.y -= SPEED * delta
-			pass
-		if state == 2:
-			$HurtBox.position.y += SPEED * delta
-			pass
 		if state == 3:
+			$Hitbox.position.y -= SPEED * delta
+			pass
+		if state == 4:
+			$Hitbox.position.y += SPEED * 4 * delta
+			pass
+		if state == 5:
 			queue_free()
 			pass
 		

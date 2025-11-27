@@ -1,11 +1,111 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckjwggudmpeca"]
+[gd_scene load_steps=24 format=3 uid="uid://ckjwggudmpeca"]
 
 [ext_resource type="Script" uid="uid://cypq100k01f65" path="res://scripts/bosses/boss_1.gd" id="1_8ry2h"]
-[ext_resource type="Texture2D" uid="uid://rxwhul5kxe27" path="res://icon.svg" id="1_53s3b"]
+[ext_resource type="Texture2D" uid="uid://bsssfb6auianj" path="res://assets/animations/boss/fly-walk/1.png" id="2_1fkmm"]
+[ext_resource type="Texture2D" uid="uid://b5p66lenxkrb3" path="res://assets/animations/boss/fly-walk/2.png" id="3_13i51"]
+[ext_resource type="Texture2D" uid="uid://biyq7ca182iny" path="res://assets/animations/boss/fly-walk/3.png" id="4_rwofw"]
+[ext_resource type="Texture2D" uid="uid://bl8no3wrn2lan" path="res://assets/animations/boss/fly-walk/4.png" id="5_o3ju6"]
+[ext_resource type="Texture2D" uid="uid://psnni2cbrjsx" path="res://assets/animations/boss/fly-walk/5.png" id="6_yba2s"]
+[ext_resource type="Texture2D" uid="uid://c7qm4jjpfadau" path="res://assets/animations/boss/fly-walk/6.png" id="7_280r5"]
+[ext_resource type="Texture2D" uid="uid://bqoodnggie1mj" path="res://assets/animations/boss/boss-attack-dodge-1/1.png" id="8_3kf36"]
+[ext_resource type="Texture2D" uid="uid://dxvm7mobnscu0" path="res://assets/animations/boss/boss-attack-dodge-1/2.png" id="9_lgt41"]
+[ext_resource type="Texture2D" uid="uid://tb3x7o8ypl2j" path="res://assets/animations/boss/boss-attack-dodge-1/3.png" id="10_mxatl"]
+[ext_resource type="Texture2D" uid="uid://c07chcf42owi5" path="res://assets/animations/boss/boss-attack-dodge-1/4.png" id="11_ycsxq"]
+[ext_resource type="Texture2D" uid="uid://u6ocpxbe5cf8" path="res://assets/animations/boss/boss-attack-dodge-1/5.png" id="12_6b78d"]
+[ext_resource type="Texture2D" uid="uid://bw0ko2ghsk1ih" path="res://assets/animations/boss/boss-attack-dodge-1/6.png" id="13_nem6v"]
+[ext_resource type="Texture2D" uid="uid://dni8dvlm3vgom" path="res://assets/animations/boss/boss-attack-dodge-1/7.png" id="14_k28l5"]
+[ext_resource type="Texture2D" uid="uid://8p3058xyat8l" path="res://assets/animations/boss/boss-attack-dodge-1/8.png" id="15_yvv2x"]
+[ext_resource type="Texture2D" uid="uid://cytkpiledf4ee" path="res://assets/animations/boss/boss-attack-dodge-1/9.png" id="16_agpl4"]
+[ext_resource type="Texture2D" uid="uid://bxrbyjwxy48sx" path="res://assets/animations/boss/boss-attack-dodge-1/10.png" id="17_l1p3y"]
+[ext_resource type="Texture2D" uid="uid://16pycb4woukp" path="res://assets/animations/boss/boss-attack-dodge-1/11.png" id="18_2s31m"]
+[ext_resource type="Texture2D" uid="uid://drbxvogov4xy7" path="res://assets/animations/boss/boss-attack-dodge-1/12.png" id="19_4p6jh"]
+[ext_resource type="Texture2D" uid="uid://bi2gmp3iwqn7w" path="res://assets/animations/boss/boss-attack-dodge-1/13.png" id="20_qljsj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5551t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1fkmm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_13i51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rwofw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o3ju6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yba2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_280r5")
+}],
+"loop": true,
+"name": &"fly-walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3kf36")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_lgt41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_mxatl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ycsxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6b78d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nem6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_k28l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ycsxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6b78d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nem6v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_k28l5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_yvv2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_agpl4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_l1p3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_2s31m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4p6jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_qljsj")
+}],
+"loop": true,
+"name": &"phase-1",
+"speed": 8.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rdia2"]
 radius = 64.0
-height = 228.0
+height = 290.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ry2h"]
 size = Vector2(124, 223)
@@ -15,11 +115,15 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_8ry2h")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_rdia2")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.99998856, -49.999996)
+scale = Vector2(0.14312504, 0.14312504)
+sprite_frames = SubResource("SpriteFrames_5551t")
+animation = &"fly-walk"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_53s3b")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-14, -44)
+shape = SubResource("CapsuleShape2D_rdia2")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

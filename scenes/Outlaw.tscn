@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://bajm1e3m8uo1t" path="res://assets/animations/scereus/slash/4.PNG" id="11_5y3pq"]
 [ext_resource type="AudioStream" uid="uid://dq2hk1i63hwh8" path="res://assets/sound/hurt.wav" id="14_st1jw"]
 [ext_resource type="AudioStream" uid="uid://c32jep07wpj31" path="res://assets/sound/shoot.wav" id="15_mnpi6"]
-[ext_resource type="AudioStream" uid="uid://d3s4y0f16cqi6" path="res://assets/sound/attack_melee.wav" id="16_2uwgq"]
 [ext_resource type="AudioStream" uid="uid://frjjpeqagv4v" path="res://assets/sound/swap.wav" id="16_5y3pq"]
+[ext_resource type="AudioStream" uid="uid://br3iwl28ffdpg" path="res://assets/sound/attack_melee.ogg" id="16_igckg"]
 [ext_resource type="AudioStream" uid="uid://e70atb3vd0qa" path="res://assets/sound/jump.wav" id="18_igckg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0dybn"]
@@ -361,7 +361,7 @@ stream = ExtResource("14_st1jw")
 stream = ExtResource("15_mnpi6")
 
 [node name="melee" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("16_2uwgq")
+stream = ExtResource("16_igckg")
 
 [node name="swap" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource("16_5y3pq")

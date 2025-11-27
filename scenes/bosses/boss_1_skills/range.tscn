@@ -1,8 +1,63 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjesn8ca841ti"]
+[gd_scene load_steps=14 format=3 uid="uid://cjesn8ca841ti"]
 
 [ext_resource type="Script" uid="uid://ti8dem02lbvc" path="res://scripts/bosses/boss_1_skills/range.gd" id="1_r63en"]
-[ext_resource type="Texture2D" uid="uid://cap8pvw2lrmu3" path="res://assets/animations/FlyingEnemy/FE1.PNG" id="2_acrog"]
-[ext_resource type="Texture2D" uid="uid://c0e43pemx81s0" path="res://assets/animations/FlyingEnemy/FE2.PNG" id="3_ad5xd"]
+[ext_resource type="Texture2D" uid="uid://dr62vd74cdiqc" path="res://assets/placeholder-ground-enemy.png" id="2_acrog"]
+[ext_resource type="Texture2D" uid="uid://bb7r2l5v5iviy" path="res://assets/animations/boss/range-attack/1.png" id="3_1anuu"]
+[ext_resource type="Texture2D" uid="uid://donaol5m1tueu" path="res://assets/animations/boss/range-attack/2.png" id="4_leuai"]
+[ext_resource type="Texture2D" uid="uid://dpgs62exg4tpg" path="res://assets/animations/boss/range-attack/3.png" id="5_qg4f0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8age4"]
+atlas = ExtResource("2_acrog")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulih"]
+atlas = ExtResource("2_acrog")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcjf7"]
+atlas = ExtResource("2_acrog")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3ymb"]
+atlas = ExtResource("2_acrog")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5pw0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8age4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcjf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3ymb")
+}],
+"loop": false,
+"name": &"approach",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1anuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_leuai")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_qg4f0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kwu5m"]
+radius = 61.583405
 
 [sub_resource type="Animation" id="Animation_xnaus"]
 resource_name = "idle"
@@ -12,40 +67,28 @@ _data = {
 &"idle": SubResource("Animation_xnaus")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dvjff"]
-atlas = ExtResource("2_acrog")
-region = Rect2(0, 0, 1080, 1080)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6r77u"]
-atlas = ExtResource("3_ad5xd")
-region = Rect2(0, 0, 1080, 1080)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1anuu"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dvjff")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6r77u")
-}],
-"loop": true,
-"name": &"fly",
-"speed": 4.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_acrog"]
-radius = 46.09772
-
 [node name="range" type="Area2D"]
 collision_layer = 32
 collision_mask = 65
 script = ExtResource("1_r63en")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 54)
+scale = Vector2(0.07124986, 0.07124986)
+sprite_frames = SubResource("SpriteFrames_c5pw0")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.9082226
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 53.875)
+shape = SubResource("CircleShape2D_kwu5m")
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(62, -7)
-target_position = Vector2(94, 0)
-collision_mask = 4
+position = Vector2(-61, 50)
+target_position = Vector2(-95, 0)
+collision_mask = 66
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -55,22 +98,11 @@ libraries = {
 [node name="DetectUp" type="RayCast2D" parent="."]
 position = Vector2(-3, 0)
 target_position = Vector2(2, -374)
-collision_mask = 2
+collision_mask = 4
 
 [node name="DetectDown" type="RayCast2D" parent="."]
 position = Vector2(0, 102)
 target_position = Vector2(2, 337)
-collision_mask = 2
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-9.536743e-07, -4)
-scale = Vector2(-0.209, 0.209)
-sprite_frames = SubResource("SpriteFrames_1anuu")
-animation = &"fly"
-autoplay = "fly"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9, -7)
-shape = SubResource("CircleShape2D_acrog")
+collision_mask = 4
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

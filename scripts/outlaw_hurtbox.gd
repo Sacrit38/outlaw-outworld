@@ -10,7 +10,7 @@ func _ready() -> void:
 func _on_area_entered(hitbox):
 	if hitbox == null:
 		return
-	if hitbox is enemy_hitbox or ranged_enemy_hitbox or boss_rangeAttack or boss_dodgeAttack or boss_dodgeAttack1:
+	if hitbox is enemy_hitbox or ranged_enemy_hitbox or boss_rangeAttack or boss_dodgeAttack:
 		owner.set_state(owner.STATE_HURT)
 		hurt.play()
 		if owner.has_method("take_damage"):

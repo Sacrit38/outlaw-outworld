@@ -100,6 +100,5 @@ func health_view(_diff : int):
 	else:
 		ins.texture = heart_blood_relic_state[health_]
 	
-
 func game_over():
 	game_over_screen.show_game_over()

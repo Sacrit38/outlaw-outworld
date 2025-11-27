@@ -15,8 +15,14 @@ position = Vector2(576, 321)
 
 [node name="Boss1" parent="Camera2D" instance=ExtResource("6_jtgdo")]
 position = Vector2(-375, 128)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 4
+collision_mask = 1
+
+[node name="Ground" parent="Camera2D" instance=ExtResource("2_aaxl1")]
+position = Vector2(2, 299)
+
+[node name="Ground2" parent="Camera2D" instance=ExtResource("2_aaxl1")]
+position = Vector2(1152, 299)
 
 [node name="Ground" parent="." instance=ExtResource("2_aaxl1")]
 position = Vector2(576, 620)

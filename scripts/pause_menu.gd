@@ -1,4 +1,7 @@
 extends Control
+@onready var volume: HSlider = $PausedMenu/VBoxContainer/volume
+const MIN_DB := -50.0  # silence floor
+const MAX_DB := 0.0   # normal volume
 
 @onready var paused_menu: PanelContainer = $PausedMenu
 @onready var option_menu: PanelContainer = $OptionMenu
@@ -12,9 +15,6 @@ func pause():
 	show()
 	get_tree().paused = true
 	$"../AnimationPlayer".play_backwards("blur")
-	
-	paused_menu.visible = true
-	option_menu.visible = false
 
 func escape():
 	if Input.is_action_just_pressed("pause") and get_tree().paused == false:
@@ -24,6 +24,8 @@ func escape():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioServer.set_bus_volume_db(0, 0.0)
+	volume.value = 0.50
 	$"../AnimationPlayer".play_backwards("blur")
 	hide()
 
@@ -56,7 +58,6 @@ func _on_back_option_pressed() -> void:
 	_ready()
 
 func _on_volume_value_changed(value) -> void:
-	AudioServer.set_bus_volume_db(0, value)
-
-func _on_mute_toggled(toggled_on: bool) -> void:
-	pass # Replace with function body.
+	# slider gives 0.0 – 1.0
+	var db = lerp(MIN_DB, MAX_DB, value)
+	AudioServer.set_bus_volume_db(0, db)

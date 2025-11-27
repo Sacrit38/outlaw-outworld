@@ -17,7 +17,7 @@ func start() -> void:
 	Global.boss = self
 	Main.move_cam = -1
 	Player.backward = true
-	position.x = -(get_viewport().size.x/2 - 75)
+	position.x = -(get_viewport_rect().size.x/2 - 75)
 	#$AnimatedSprite2D.play("fly-walk")
 	pass
 
@@ -37,11 +37,10 @@ func _physics_process(delta: float) -> void:
 func phase_1() -> void:
 	#var rando = randi_range(1, 3)
 	#if rando == 1:
-		set_state(STATE_DODGE)
 		var skill_instance : Node2D = dodge_1.instantiate()
 		var player_transform : CollisionShape2D = get_parent().get_parent().get_node("Outlaw/OutlawCollision")
 		var parent : Node2D = get_parent()
-		skill_instance.global_position = Vector2( player_transform.global_position.x - parent.global_position.x, (get_viewport().size.y/2) - 75)
+		skill_instance.global_position = Vector2( player_transform.global_position.x - parent.global_position.x, (get_viewport_rect().size.y/2) - ground_height*3)
 		get_parent().add_child(skill_instance)
 	#if rando == 2:
 		#var skill_instance : Node2D = dodge_2.instantiate()
@@ -58,8 +57,6 @@ func phase_1() -> void:
 
 func phase_2() -> void:
 	var rando = randi_range(1, 2)
-	set_state(STATE_RANGE)
-		
 	if rando == 1:
 		var skill_instance : Node2D = range_1.instantiate()
 		skill_instance.global_position = Vector2(-(get_viewport().size.x/2) - 50, (get_viewport().size.y/3)  - 100)
@@ -68,7 +65,7 @@ func phase_2() -> void:
 		var skill_instance : Node2D = range_1.instantiate()
 		skill_instance.global_position = Vector2(-(get_viewport().size.x/2) - 50, -(get_viewport().size.y/4)  - 50)
 		get_parent().add_child(skill_instance)
-
+	
 	pass
 
 func phase_3() -> void:

@@ -2,7 +2,7 @@ extends Node2D
 class_name Main
 
 var flying_heights := [200, 390]
-const OUTLAW_START := Vector2i(200, 490)
+const OUTLAW_START := Vector2i(200, 500)
 const CAMERA_START := Vector2i(576, 321)
 const SPEED :float = 500.0
 @onready var game_over_screen = $GameOver/GameOver

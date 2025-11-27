@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bja4ssco6j824"]
+[gd_scene load_steps=52 format=3 uid="uid://bja4ssco6j824"]
 
 [ext_resource type="Script" uid="uid://djjlnyuoulpl4" path="res://scripts/outlaw.gd" id="1_ahkar"]
 [ext_resource type="Texture2D" uid="uid://i4chy624xpnk" path="res://assets/animations/scereus/run.png" id="1_gwqp1"]
@@ -14,10 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://bny6re7oclmkb" path="res://assets/animations/scereus/slash/3.PNG" id="10_mnpi6"]
 [ext_resource type="Texture2D" uid="uid://bajm1e3m8uo1t" path="res://assets/animations/scereus/slash/4.PNG" id="11_5y3pq"]
 [ext_resource type="AudioStream" uid="uid://dq2hk1i63hwh8" path="res://assets/sound/hurt.wav" id="14_st1jw"]
-[ext_resource type="AudioStream" uid="uid://c32jep07wpj31" path="res://assets/sound/shoot.wav" id="15_mnpi6"]
-[ext_resource type="AudioStream" uid="uid://frjjpeqagv4v" path="res://assets/sound/swap.wav" id="16_5y3pq"]
-[ext_resource type="AudioStream" uid="uid://br3iwl28ffdpg" path="res://assets/sound/attack_melee.ogg" id="16_igckg"]
-[ext_resource type="AudioStream" uid="uid://e70atb3vd0qa" path="res://assets/sound/jump.wav" id="18_igckg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0dybn"]
 atlas = ExtResource("2_0dybn")
@@ -352,22 +348,10 @@ script = ExtResource("9_e5f5e")
 position = Vector2(86, 10)
 shape = SubResource("RectangleShape2D_smyh7")
 
-[node name="Audio" type="Node2D" parent="."]
-
-[node name="hurt" type="AudioStreamPlayer2D" parent="Audio"]
+[node name="hurt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_st1jw")
 
-[node name="shoot" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("15_mnpi6")
-
-[node name="melee" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("16_igckg")
-
-[node name="swap" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("16_5y3pq")
-
-[node name="jump" type="AudioStreamPlayer2D" parent="Audio"]
-stream = ExtResource("18_igckg")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [connection signal="animation_finished" from="Scereus" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="Scereus" to="." method="_on_animated_sprite_2d_animation_looped"]

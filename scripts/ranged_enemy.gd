@@ -3,6 +3,8 @@ extends CharacterBody2D
 @export  var fire_rate = 2.5
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var muzzle: Marker2D = %muzzle
+@onready var hit_dead: AudioStreamPlayer2D = $Audio/HitDead
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var stop = false
 var reload = .5
@@ -77,5 +79,4 @@ func fire():
 
 func delete(eliminated : bool) -> void:
 	if eliminated:
-		print("range eliminated")
-		queue_free()
+		animation_player.play("dead")

@@ -18,6 +18,7 @@ func _on_area_entered(hitbox):
 		
 	if hitbox is melee_hitbox:
 		if owner.has_method("delete"):
+			Global.score += 250*Global.SCORE_MODIFIER
 			owner.delete(true)
 	
 	if hitbox is range_attack:

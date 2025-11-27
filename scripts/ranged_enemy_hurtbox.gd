@@ -11,4 +11,5 @@ func _on_area_entered(hitbox):
 	
 	if hitbox is range_attack:
 		if owner.has_method("delete"):
+			Global.score += 200*Global.SCORE_MODIFIER
 			owner.delete(true)

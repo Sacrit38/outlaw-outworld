@@ -33,7 +33,7 @@ collision_layer = 1
 collision_mask = 2
 
 [node name="Outlaw" parent="." instance=ExtResource("3_3amdw")]
-position = Vector2(124, 478)
+position = Vector2(200, 490)
 
 [node name="foreground" parent="." instance=ExtResource("7_o6xl0")]
 

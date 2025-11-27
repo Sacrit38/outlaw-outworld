@@ -13,9 +13,6 @@ var animation_lock = false
 var state = STATE_FLY
 
 
-func _ready():
-	$AnimatedSprite2D.connect("frame_changed", self._on_animated_sprite_2d_frame_changed)
-
 func start() -> void:
 	Global.boss = self
 	Main.move_cam = -1
@@ -59,13 +56,10 @@ func phase_1() -> void:
 	#position.x = (get_viewport().size.x/2 - 75)
 	#pass
 
-var phase2_loopFrame_start = 21
-var phase2_loopFrame_end = 24
-var is_looping = false
 func phase_2() -> void:
 	var rando = randi_range(1, 2)
 	set_state(STATE_RANGE)
-	is_looping = false
+		
 	if rando == 1:
 		var skill_instance : Node2D = range_1.instantiate()
 		skill_instance.global_position = Vector2(-(get_viewport().size.x/2) - 50, (get_viewport().size.y/3)  - 100)
@@ -76,17 +70,7 @@ func phase_2() -> void:
 		get_parent().add_child(skill_instance)
 
 	pass
-	
-func _on_animated_sprite_2d_frame_changed() -> void:
-	var phase2_currentFrame = $AnimatedSprite2D.frame
-	if $AnimatedSprite2D.animation == "rangePhase":
-		if phase2_currentFrame >= phase2_loopFrame_start and phase2_currentFrame <= phase2_loopFrame_end:
-			if not is_looping:
-				is_looping = true
-				$AnimatedSprite2D.frame = phase2_loopFrame_start  # Loop back to frame 24
-		elif phase2_currentFrame > phase2_loopFrame_end:
-			is_looping = false  # Stop looping after frame 26
-	
+
 func phase_3() -> void:
 	melee = true
 	pass
@@ -163,7 +147,6 @@ func set_state(new_state):
 
 func _on_animated_sprite_2d_animation_finished():
 	animation_lock = false
-	is_looping = false
 
 func _on_animated_sprite_2d_animation_looped():
 	animation_lock = false

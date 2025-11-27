@@ -9,7 +9,7 @@ var threshold_var: int
 var boss_phase: bool
 var backward: bool = false
 var chapter: int
-var threshold = [2000, 3000]
+var threshold = [2000, 30000]
 var boss : Node
 
 func check_high_score():
@@ -35,6 +35,8 @@ func boss_defeated():
 	boss_phase = false
 	
 func next_chapter():
+	boss_phase = false
+	threshold_var = 0
 	chapter += 1
 	#somthin somthin bla bla bla
 	

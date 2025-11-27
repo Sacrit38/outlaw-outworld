@@ -1,19 +1,19 @@
-[gd_scene load_steps=19 format=3 uid="uid://bkwdpgslvfnij"]
+[gd_scene load_steps=19 format=3 uid="uid://crvmanqevurp5"]
 
-[ext_resource type="Script" uid="uid://cgrm7a1cmr656" path="res://scripts/melee_enemy.gd" id="1_xnaus"]
-[ext_resource type="Script" uid="uid://bg8idimb0wxxx" path="res://scripts/melee_enemy_hitbox.gd" id="3_vaj5w"]
-[ext_resource type="Script" uid="uid://806oefs3q4b0" path="res://scripts/melee_enemy_hurtbox.gd" id="4_8age4"]
-[ext_resource type="Texture2D" uid="uid://t5wl42bdk88k" path="res://assets/animations/GroundEnemy2/attack/1.png" id="4_57jc1"]
-[ext_resource type="Texture2D" uid="uid://ch0x3vxqlu8ws" path="res://assets/animations/GroundEnemy2/attack/2.png" id="5_xor78"]
-[ext_resource type="Texture2D" uid="uid://cdmcgqjhcprtc" path="res://assets/animations/GroundEnemy2/attack/3.png" id="6_7hk04"]
-[ext_resource type="Texture2D" uid="uid://bfjbr6ihp25s5" path="res://assets/animations/GroundEnemy2/attack/4.png" id="7_kj42m"]
-[ext_resource type="Texture2D" uid="uid://dm4s2e8d1pvoc" path="res://assets/animations/GroundEnemy2/attack/5.png" id="8_f7c8j"]
-[ext_resource type="Texture2D" uid="uid://bqsxc2v8g6q8m" path="res://assets/animations/GroundEnemy2/dodge.png" id="9_76rhj"]
-[ext_resource type="Texture2D" uid="uid://coososku48pgm" path="res://assets/animations/GroundEnemy2/walk/1.png" id="10_xtaqh"]
-[ext_resource type="Texture2D" uid="uid://dwtgsfaspcflp" path="res://assets/animations/GroundEnemy2/walk/2.png" id="11_x6nl2"]
-[ext_resource type="Texture2D" uid="uid://c3lk560jpcsbl" path="res://assets/animations/GroundEnemy2/walk/3.png" id="12_p5vi3"]
-[ext_resource type="Texture2D" uid="uid://ce74508mmi7bo" path="res://assets/animations/GroundEnemy2/walk/4.png" id="13_sf6p0"]
-[ext_resource type="Texture2D" uid="uid://cv5wfvevvvlet" path="res://assets/animations/GroundEnemy2/walk/5.png" id="14_frl1n"]
+[ext_resource type="Script" uid="uid://j33ptxt5gt8b" path="res://scripts/melee_enemy_s2.gd" id="1_tc35p"]
+[ext_resource type="Script" uid="uid://bg8idimb0wxxx" path="res://scripts/melee_enemy_hitbox.gd" id="2_ufq2a"]
+[ext_resource type="Script" uid="uid://806oefs3q4b0" path="res://scripts/melee_enemy_hurtbox.gd" id="3_1smmb"]
+[ext_resource type="Texture2D" uid="uid://t5wl42bdk88k" path="res://assets/animations/GroundEnemy2/attack/1.png" id="4_b1j7x"]
+[ext_resource type="Texture2D" uid="uid://ch0x3vxqlu8ws" path="res://assets/animations/GroundEnemy2/attack/2.png" id="5_j1iva"]
+[ext_resource type="Texture2D" uid="uid://cdmcgqjhcprtc" path="res://assets/animations/GroundEnemy2/attack/3.png" id="6_6y7et"]
+[ext_resource type="Texture2D" uid="uid://bfjbr6ihp25s5" path="res://assets/animations/GroundEnemy2/attack/4.png" id="7_513a7"]
+[ext_resource type="Texture2D" uid="uid://dm4s2e8d1pvoc" path="res://assets/animations/GroundEnemy2/attack/5.png" id="8_5a1cj"]
+[ext_resource type="Texture2D" uid="uid://bqsxc2v8g6q8m" path="res://assets/animations/GroundEnemy2/dodge.png" id="9_vx8vg"]
+[ext_resource type="Texture2D" uid="uid://coososku48pgm" path="res://assets/animations/GroundEnemy2/walk/1.png" id="10_fah3s"]
+[ext_resource type="Texture2D" uid="uid://dwtgsfaspcflp" path="res://assets/animations/GroundEnemy2/walk/2.png" id="11_y6mpo"]
+[ext_resource type="Texture2D" uid="uid://c3lk560jpcsbl" path="res://assets/animations/GroundEnemy2/walk/3.png" id="12_m3fkc"]
+[ext_resource type="Texture2D" uid="uid://ce74508mmi7bo" path="res://assets/animations/GroundEnemy2/walk/4.png" id="13_f632h"]
+[ext_resource type="Texture2D" uid="uid://cv5wfvevvvlet" path="res://assets/animations/GroundEnemy2/walk/5.png" id="14_e5k3t"]
 
 [sub_resource type="Animation" id="Animation_xnaus"]
 resource_name = "idle"
@@ -30,19 +30,19 @@ size = Vector2(80, 121.75)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_57jc1")
+"texture": ExtResource("4_b1j7x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_xor78")
+"texture": ExtResource("5_j1iva")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_7hk04")
+"texture": ExtResource("6_6y7et")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_kj42m")
+"texture": ExtResource("7_513a7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_f7c8j")
+"texture": ExtResource("8_5a1cj")
 }],
 "loop": false,
 "name": &"attack",
@@ -50,7 +50,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_76rhj")
+"texture": ExtResource("9_vx8vg")
 }],
 "loop": false,
 "name": &"dodge",
@@ -58,19 +58,19 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_xtaqh")
+"texture": ExtResource("10_fah3s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_x6nl2")
+"texture": ExtResource("11_y6mpo")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_p5vi3")
+"texture": ExtResource("12_m3fkc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_sf6p0")
+"texture": ExtResource("13_f632h")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_frl1n")
+"texture": ExtResource("14_e5k3t")
 }],
 "loop": true,
 "name": &"idle",
@@ -79,7 +79,7 @@ animations = [{
 
 [node name="melee_enemy" type="Area2D"]
 collision_layer = 4
-script = ExtResource("1_xnaus")
+script = ExtResource("1_tc35p")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -90,7 +90,7 @@ libraries = {
 position = Vector2(7.762497, -81.23752)
 collision_layer = 32
 collision_mask = 64
-script = ExtResource("3_vaj5w")
+script = ExtResource("2_ufq2a")
 
 [node name="HitboxShape" type="CollisionShape2D" parent="MeleeEnemy_Hitbox"]
 position = Vector2(-1.762497, 53.875)
@@ -100,7 +100,7 @@ shape = SubResource("RectangleShape2D_md266")
 position = Vector2(7.762497, -81.23752)
 collision_layer = 128
 collision_mask = 24
-script = ExtResource("4_8age4")
+script = ExtResource("3_1smmb")
 
 [node name="HurtboxShape" type="CollisionShape2D" parent="MeleeEnemy_Hurtbox"]
 position = Vector2(-1, 53.875)

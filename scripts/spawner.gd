@@ -3,8 +3,8 @@ extends Node2D
 # For spawning mechanism, if further
 var melee_enemy_scene = preload("res://scenes/melee_enemy.tscn")
 var ranged_enemy_scene = preload("res://scenes/ranged_enemy.tscn")
-var boss_enemy_scene = [preload("res://scenes/bosses/boss_1.tscn")]
-var obstacle_types := [melee_enemy_scene, ranged_enemy_scene]
+var boss_enemy_scene = [preload("res://scenes/bosses/boss_1.tscn"), preload("res://scenes/bosses/boss_2.tscn")]
+var obstacle_types := [[melee_enemy_scene, ranged_enemy_scene], []]
 var flying_heights := [200, 390]
 var has_boss = false
 
@@ -27,20 +27,22 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Global.boss_phase && not has_boss:
 		for child in get_children():
-			child.queue_free()
+			if child is not Timer:
+				child.queue_free()
 		var boss = boss_enemy_scene[Global.chapter - 1].instantiate()
 		get_parent().add_child(boss)
 		boss.start()
 		has_boss = true
 	if not Global.boss_phase && has_boss:
 		has_boss = false
+		$Timer.start()
 	pass
 
 func generate_enemy():
 	screen_size = get_viewport_rect().size
 	#generate ground obstacle
 	var type = randi() % obstacle_types.size()
-	var enemy_type = obstacle_types[type]
+	var enemy_type = obstacle_types[Global.chapter-1][type]
 	var enemy
 	enemy = enemy_type.instantiate()
 	
@@ -67,12 +69,13 @@ func generate_enemy():
 	enemy.position = Vector2i(enemy_x, enemy_y)
 	add_obs(enemy, 0, enemy_y)
 
-func add_obs(obs, x, y):
+func add_obs(obs : Node2D, x, y):
 	obs.position = Vector2i(x, y)
 	add_child(obs)
 
 
 func _on_timer_timeout() -> void:
+	print(Global.boss_phase)
 	if Global.game_running && not Global.boss_phase:
 		generate_enemy()
 		pass # Replace with function body.

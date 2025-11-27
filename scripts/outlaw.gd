@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 var animation_lock = false
 var state = STATE_IDLE
@@ -18,14 +19,8 @@ enum {
 	#STATE_SWAP
 }
 
-enum boss_state{
-	START_BOSS,
-	BOSSING,
-	END_BOSS,
-	NO_BOSS
-}
-# START_BOSS to test boss
-static var boss = boss_state.NO_BOSS
+static var backward = false
+var is_backward = false
 
 func set_state(new_state):
 	if Input.is_action_just_pressed("attack_button") and Melee and not is_on_floor():
@@ -103,8 +98,8 @@ func _ready():
 	set_state(STATE_IDLE)
 	$MeleeHitbox/Hitbox.disabled = true
 
-const GRAVITY : int = 4200
-const JUMP_VELOCITY = -1800
+const GRAVITY : int = 2400
+const JUMP_VELOCITY = -1100
 var Melee : bool = true 
 var can_attack: bool = true
 var Projectile = preload("uid://c08faj4cqcv8g") 
@@ -114,7 +109,7 @@ signal game_over
 func shoot() -> void:
 	var projectile = Projectile.instantiate()
 	projectile.global_position = global_position
-	if boss == boss_state.BOSSING:
+	if backward:
 		projectile.reversed()
 	get_parent().add_child(projectile)
 
@@ -153,9 +148,9 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("jump_button") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
 				
-		if boss == boss_state.START_BOSS:
-			scale.x = -scale.x
-			boss = boss_state.BOSSING
+		if backward != is_backward:
+			scale.x = -1
+			is_backward = backward
 			
 	if health.get_health() <= 0:
 		emit_signal("game_over") 

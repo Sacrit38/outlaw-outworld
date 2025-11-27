@@ -120,6 +120,7 @@ animations = [{
 }]
 
 [node name="melee_enemy" type="Area2D"]
+position = Vector2(0, 26)
 collision_layer = 4
 script = ExtResource("1_xnaus")
 

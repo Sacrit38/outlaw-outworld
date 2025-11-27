@@ -3,8 +3,10 @@ extends Node2D
 # For spawning mechanism, if further
 var melee_enemy_scene = preload("res://scenes/melee_enemy.tscn")
 var ranged_enemy_scene = preload("res://scenes/ranged_enemy.tscn")
+var boss_enemy_scene = [preload("res://scenes/bosses/boss_1.tscn")]
 var obstacle_types := [melee_enemy_scene, ranged_enemy_scene]
 var flying_heights := [200, 390]
+var has_boss = false
 
 const outlaw_start := Vector2i(100, 510)
 const camera_start := Vector2i(576, 321)
@@ -18,12 +20,24 @@ var ground_height : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	screen_size = get_window().size
-	ground_height = 40
+	var ground : StaticBody2D = $"../../Ground"
+	ground_height = (ground.get_node("CollisionShape2D").shape.size.y/2) * (ground.global_scale.y/2)
 	pass # Replace with function body.
 
+func _process(_delta: float) -> void:
+	if Global.boss_phase && not has_boss:
+		for child in get_children():
+			child.queue_free()
+		var boss = boss_enemy_scene[Global.chapter - 1].instantiate()
+		get_parent().add_child(boss)
+		boss.start()
+		has_boss = true
+	if not Global.boss_phase && has_boss:
+		has_boss = false
+	pass
 
 func generate_enemy():
+	screen_size = get_viewport_rect().size
 	#generate ground obstacle
 	var type = randi() % obstacle_types.size()
 	var enemy_type = obstacle_types[type]
@@ -42,12 +56,12 @@ func generate_enemy():
 		enemy_scale = enemy.get_node("Sprite2D").scale
 	
 	var enemy_x : int = screen_size.x + 100
-	var enemy_y : int = (screen_size.y/2) - ground_height - (enemy_height * enemy_scale.y /2) + 5
+	var enemy_y : int = (screen_size.y/2) - ground_height - (enemy_height * enemy_scale.y /2) - 10
 	
 	# Add flying type if range 
 	if type == 1:
 		if randi() % obstacle_types.size() == 1:
-			enemy_y = -(screen_size.y/2) + (enemy_height * enemy_scale.y /2) + 100
+			enemy_y -= 235
 	
 	last_enemy = enemy
 	enemy.position = Vector2i(enemy_x, enemy_y)
@@ -59,6 +73,6 @@ func add_obs(obs, x, y):
 
 
 func _on_timer_timeout() -> void:
-	if Global.game_running:
+	if Global.game_running && not Global.boss_phase:
 		generate_enemy()
 		pass # Replace with function body.

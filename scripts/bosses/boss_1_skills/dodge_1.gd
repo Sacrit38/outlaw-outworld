@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var collision : CollisionShape2D = $HurtBox/CollisionShape2D
+@onready var collision : CollisionShape2D = $HitBox/HitboxShape
 const SPEED = 100
 var state : int = 0
 # Called when the node enters the scene tree for the first time.

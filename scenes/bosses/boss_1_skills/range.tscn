@@ -1,79 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjesn8ca841ti"]
+[gd_scene load_steps=10 format=3 uid="uid://cjesn8ca841ti"]
 
 [ext_resource type="Script" uid="uid://ti8dem02lbvc" path="res://scripts/bosses/boss_1_skills/range.gd" id="1_r63en"]
-[ext_resource type="Texture2D" uid="uid://dr62vd74cdiqc" path="res://assets/placeholder-ground-enemy.png" id="2_acrog"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8age4"]
-atlas = ExtResource("2_acrog")
-region = Rect2(0, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fulih"]
-atlas = ExtResource("2_acrog")
-region = Rect2(24, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xcjf7"]
-atlas = ExtResource("2_acrog")
-region = Rect2(48, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x3ymb"]
-atlas = ExtResource("2_acrog")
-region = Rect2(72, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t7tl4"]
-atlas = ExtResource("2_acrog")
-region = Rect2(0, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4trc7"]
-atlas = ExtResource("2_acrog")
-region = Rect2(24, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_34nm0"]
-atlas = ExtResource("2_acrog")
-region = Rect2(48, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ppig"]
-atlas = ExtResource("2_acrog")
-region = Rect2(72, 24, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_c5pw0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8age4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fulih")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xcjf7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x3ymb")
-}],
-"loop": false,
-"name": &"approach",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t7tl4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4trc7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_34nm0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ppig")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 8.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_md266"]
-size = Vector2(132, 121.75)
+[ext_resource type="Texture2D" uid="uid://cap8pvw2lrmu3" path="res://assets/animations/FlyingEnemy/FE1.PNG" id="2_acrog"]
+[ext_resource type="Texture2D" uid="uid://c0e43pemx81s0" path="res://assets/animations/FlyingEnemy/FE2.PNG" id="3_ad5xd"]
 
 [sub_resource type="Animation" id="Animation_xnaus"]
 resource_name = "idle"
@@ -83,26 +12,39 @@ _data = {
 &"idle": SubResource("Animation_xnaus")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvjff"]
+atlas = ExtResource("2_acrog")
+region = Rect2(0, 0, 1080, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r77u"]
+atlas = ExtResource("3_ad5xd")
+region = Rect2(0, 0, 1080, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1anuu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvjff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r77u")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_acrog"]
+radius = 46.09772
+
 [node name="range" type="Area2D"]
 collision_layer = 32
 collision_mask = 65
 script = ExtResource("1_r63en")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -7.6293945e-06)
-scale = Vector2(9.791666, 9.791666)
-sprite_frames = SubResource("SpriteFrames_c5pw0")
-animation = &"idle"
-autoplay = "idle"
-flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 53.875)
-shape = SubResource("RectangleShape2D_md266")
-
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-61, 50)
-target_position = Vector2(-95, 0)
+position = Vector2(62, -7)
+target_position = Vector2(94, 0)
 collision_mask = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -113,11 +55,22 @@ libraries = {
 [node name="DetectUp" type="RayCast2D" parent="."]
 position = Vector2(-3, 0)
 target_position = Vector2(2, -374)
-collision_mask = 4
+collision_mask = 2
 
 [node name="DetectDown" type="RayCast2D" parent="."]
 position = Vector2(0, 102)
 target_position = Vector2(2, 337)
-collision_mask = 4
+collision_mask = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-9.536743e-07, -4)
+scale = Vector2(-0.209, 0.209)
+sprite_frames = SubResource("SpriteFrames_1anuu")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, -7)
+shape = SubResource("CircleShape2D_acrog")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

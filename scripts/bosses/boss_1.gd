@@ -37,6 +37,8 @@ func _physics_process(delta: float) -> void:
 func phase_1() -> void:
 	#var rando = randi_range(1, 3)
 	#if rando == 1:
+		var ground : StaticBody2D = $"../../Ground"
+		var ground_height = (ground.get_node("CollisionShape2D").shape.size.y) * (ground.global_scale.y)/2
 		var skill_instance : Node2D = dodge_1.instantiate()
 		var player_transform : CollisionShape2D = get_parent().get_parent().get_node("Outlaw/OutlawCollision")
 		var parent : Node2D = get_parent()

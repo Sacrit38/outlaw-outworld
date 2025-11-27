@@ -30,6 +30,7 @@ var viewportX
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.score = 0
+	Global.threshold_var = 0
 	new_game()
 	$Outlaw.connect("game_over", self.game_over)
 	

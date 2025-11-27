@@ -11,9 +11,11 @@ var dodge_2 = preload("res://scenes/bosses/boss_1_skills/dodge_1.tscn")
 var range_1 = preload("res://scenes/bosses/boss_1_skills/range.tscn")
 
 func start() -> void:
+	Global.boss = self
 	Main.move_cam = -1
 	Player.backward = true
 	position.x = -(get_viewport().size.x/2 - 75)
+	$AnimatedSprite2D.play("fly-walk")
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -29,19 +31,19 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func phase_1() -> void:
-	var rando = randi_range(1, 3)
+	var rando = randi_range(1, 1)
 	if rando == 1:
 		var skill_instance : Node2D = dodge_1.instantiate()
 		skill_instance.global_position = Vector2(0, (get_viewport().size.y/2) - 50)
 		get_parent().add_child(skill_instance)
-	if rando == 2:
-		var skill_instance : Node2D = dodge_2.instantiate()
-		skill_instance.global_position = Vector2(-(get_viewport().size.x/2) + 50, (get_viewport().size.y/3)  - 50)
-		get_parent().add_child(skill_instance)
-	if rando == 3:
-		var skill_instance : Node2D = dodge_2.instantiate()
-		skill_instance.global_position = Vector2(-(get_viewport().size.x/2) + 50, -(get_viewport().size.y/4)  - 50)
-		get_parent().add_child(skill_instance)
+	#if rando == 2:
+		#var skill_instance : Node2D = dodge_2.instantiate()
+		#skill_instance.global_position = Vector2(-(get_viewport().size.x/2) + 50, (get_viewport().size.y/3)  - 50)
+		#get_parent().add_child(skill_instance)
+	#if rando == 3:
+		#var skill_instance : Node2D = dodge_2.instantiate()
+		#skill_instance.global_position = Vector2(-(get_viewport().size.x/2) + 50, -(get_viewport().size.y/4)  - 50)
+		#get_parent().add_child(skill_instance)
 	pass
 	
 #func phase_1_to_2() -> void:
@@ -66,7 +68,7 @@ func phase_3() -> void:
 	pass
 
 func _on_timer_timeout() -> void:
-	state_time+=1 
+	state_time+=1
 	if state_time < 10:
 		phase_1()
 		pass
@@ -78,10 +80,9 @@ func _on_timer_timeout() -> void:
 		pass
 	else :
 		Global.boss_defeated()
-		#Global.next_chapter()
+		Global.next_chapter()
 		Main.move_cam = 1
 		Player.backward = false
-		queue_free()
 	
 	pass # Replace with function body.
 

@@ -22,14 +22,16 @@ func _on_restart_pressed() -> void:
 	get_tree().paused = false
 	$"../AnimationPlayer".play_backwards("blur")
 	hide()
+	if Global.boss_phase:
+		Global.boss_defeated()
 	Global.check_high_score()
+	Global.game_running = false
+	Global.chapter = 1
+	Global.boss_phase = false
 	get_tree().reload_current_scene()
 	var player = get_node("../../Outlaw")
 	if player.state != player.STATE_RUN:
 		player.state = player.STATE_RUN
-	Global.game_running = false
-	Global.chapter = 1
-	Global.boss_phase = false
 
 func _on_quit_pressed() -> void:
 	get_tree().quit() 

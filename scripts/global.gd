@@ -10,6 +10,7 @@ var boss_phase: bool
 var backward: bool = false
 var chapter: int
 var threshold = [2000, 3000]
+var boss : Node
 
 func check_high_score():
 	if score/SCORE_MODIFIER > high_score:
@@ -28,6 +29,9 @@ func _process(_delta: float) -> void:
 	pass
 	
 func boss_defeated():
+	threshold_var = 0
+	boss.call_deferred("free")
+	Player.backward = false
 	boss_phase = false
 	
 func next_chapter():

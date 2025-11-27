@@ -31,10 +31,12 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func phase_1() -> void:
-	var rando = randi_range(1, 1)
-	if rando == 1:
+	#var rando = randi_range(1, 3)
+	#if rando == 1:
 		var skill_instance : Node2D = dodge_1.instantiate()
-		skill_instance.global_position = Vector2(0, (get_viewport().size.y/2) - 50)
+		var player_transform : CollisionShape2D = get_parent().get_parent().get_node("Outlaw/OutlawCollision")
+		var parent : Node2D = get_parent()
+		skill_instance.global_position = Vector2( player_transform.global_position.x - parent.global_position.x, (get_viewport().size.y/2) - 75)
 		get_parent().add_child(skill_instance)
 	#if rando == 2:
 		#var skill_instance : Node2D = dodge_2.instantiate()
@@ -44,7 +46,6 @@ func phase_1() -> void:
 		#var skill_instance : Node2D = dodge_2.instantiate()
 		#skill_instance.global_position = Vector2(-(get_viewport().size.x/2) + 50, -(get_viewport().size.y/4)  - 50)
 		#get_parent().add_child(skill_instance)
-	pass
 	
 #func phase_1_to_2() -> void:
 	#position.x = (get_viewport().size.x/2 - 75)

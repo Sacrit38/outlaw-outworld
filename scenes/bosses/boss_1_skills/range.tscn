@@ -38,10 +38,23 @@ collision_layer = 32
 collision_mask = 203
 script = ExtResource("1_r63en")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 54)
+scale = Vector2(0.07124986, 0.07124986)
+sprite_frames = SubResource("SpriteFrames_c5pw0")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.9082226
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 53.875)
+shape = SubResource("CircleShape2D_kwu5m")
+
 [node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(62, -7)
-target_position = Vector2(94, 0)
-collision_mask = 4
+position = Vector2(-61, 50)
+target_position = Vector2(-95, 0)
+collision_mask = 66
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -51,7 +64,7 @@ libraries = {
 [node name="DetectUp" type="RayCast2D" parent="."]
 position = Vector2(-3, 0)
 target_position = Vector2(2, -374)
-collision_mask = 2
+collision_mask = 4
 
 [node name="DetectDown" type="RayCast2D" parent="."]
 position = Vector2(0, 102)

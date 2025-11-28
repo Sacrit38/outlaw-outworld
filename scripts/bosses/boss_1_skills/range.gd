@@ -19,5 +19,12 @@ func movement(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Outlaw":
+		await get_tree().create_timer(.5).timeout
+		queue_free()
+	pass # Replace with function body.
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area is range_attack or melee_hitbox:
 		queue_free()
 	pass # Replace with function body.
